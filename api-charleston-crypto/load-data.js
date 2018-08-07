@@ -10,51 +10,33 @@ console.log("HERE", COUCHDB_SERVER)
 const db = new PouchDB(DB_URL)
 
 db.bulkDocs([
-
-
   {
-    _id: "category_health-and-wellness",
+    _id: "category_getting-started",
     type: "category",
-    name: "Health and Wellness",
-    shortDesc:
-      "programs and services that provide mental, physical, and spiritual support",
-    desc:
-      "Health & Wellness includes programs and services that provide mental, physical, and spiritual support for current military members, retired veterans, caregivers, and for the friends and family of those individuals mentioned previously.",
-    icon: "rowing"
+    name: "Getting Started",
+    icon: "H"
   },
 
   {
-    _id: "category_housing-and-homeless-prevention-programs",
+    _id: "category_history-of-bitcoin",
     type: "category",
-    name: "Housing and Homeless Prevention Programs",
-    shortDesc:
-      "programs and services that provide assistance in identifying safe and affordable housing",
-    desc:
-      "Housing/Homeless Prevention Programs include programs and services that provide assistance in identifying safe, affordable housing and/or in preventing homelessness through financial support with rental and utility payments.",
-    icon: "home"
+    name: "History of Bitcoin",
+    icon: "H"
   },
 
   {
-    _id: "category_information-and-referral-services",
+    _id: "category_news-sites",
     type: "category",
-    name: "Information and Referral Services",
-    shortDesc: "telephone help and crisis management",
-    desc:
-      "Information & Referral Services include telephone help/crisis management lines and websites to assist veterans and their family members in locating helpful information.",
-    icon: "message"
+    name: "News Sites",
+    icon: "N"
   },
 
   {
-    _id: "category_peer-support-and-recreation",
+    _id: "category_podcasts",
     type: "category",
-    name: "Peer Support and Recreation",
-    shortDesc:
-      "veteran-specific support contacts for emotional wellness through social interactions",
-    desc:
-      "Peer Support & Recreation includes veteran-specific support contacts for emotional wellness and recreation in terms of community involvement through social interactions.",
-    icon: "supervisor_account"
-  },
-
+    name: "Podcasts",
+    icon: "P"
+  }
 ])
   .then(result => console.log("success", JSON.stringify(result, null, 2)))
   .catch(err => console.log("err", err))
