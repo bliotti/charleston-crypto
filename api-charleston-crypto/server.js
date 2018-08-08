@@ -20,4 +20,6 @@ app.use((err, req, res, next) => {
   next(err)
 })
 
-app.listen(PORT || 5000, () => console.log("UP on ", PORT || 5000))
+app.listen(PORT || 5000, () =>
+  console.log(`Go to http://localhost:${PORT || 5000}`)
+)

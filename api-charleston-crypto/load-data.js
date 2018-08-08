@@ -14,7 +14,7 @@ db.bulkDocs([
     _id: "category_getting-started",
     type: "category",
     name: "Getting Started",
-    icon: "H"
+    icon: "G"
   },
 
   {
