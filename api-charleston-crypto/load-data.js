@@ -14,29 +14,209 @@ db.bulkDocs([
     _id: "category_getting-started",
     type: "category",
     name: "Getting Started",
-    icon: "G"
+    icon: "G",
+    sortKey: 1
   },
-
   {
     _id: "category_history-of-bitcoin",
     type: "category",
     name: "History of Bitcoin",
-    icon: "H"
+    icon: "H",
+    sortKey: 2
   },
-
   {
     _id: "category_news-sites",
     type: "category",
     name: "News Sites",
-    icon: "N"
+    icon: "N",
+    sortKey: 3
   },
-
   {
     _id: "category_podcasts",
     type: "category",
     name: "Podcasts",
-    icon: "P"
+    icon: "P",
+    sortKey: 4
+  },
+  {
+    _id: "category_discussion-forums",
+    type: "category",
+    name: "Discussion Forums",
+    icon: "D",
+    sortKey: 5
+  },
+  {
+    _id: "category_miscellaneous-statistics",
+    type: "category",
+    name: "Miscellaneous Statistics",
+    icon: "M",
+    sortKey: 6
+  },
+  {
+    _id: "category_transaction-fee-estimates",
+    type: "category",
+    name: "Transaction Fee Estimates",
+    icon: "T",
+    sortKey: 7
+  },
+  {
+    _id: "category_block-explorers",
+    type: "category",
+    name: "Block Explorers",
+    icon: "B",
+    sortKey: 8
+  },
+
+  {
+    _id: "category_visualizations",
+    type: "category",
+    name: "Visualizations",
+    icon: "V",
+    sortKey: 9
+  },
+  {
+    _id: "category_mining",
+    type: "category",
+    name: "Mining",
+    icon: "M",
+    sortKey: 10
+  },
+  {
+    _id: "category_deep-dive-technical-resources",
+    type: "category",
+    name: "Deep Dive Technical Resources",
+    icon: "D",
+    sortKey: 11
+  },
+  {
+    _id: "category_developer-tools",
+    type: "category",
+    name: "Developer Tools",
+    icon: "P",
+    sortKey: 12
+  },
+  {
+    _id: "category_security",
+    type: "category",
+    name: "Security",
+    icon: "D",
+    sortKey: 13
+  },
+  {
+    _id: "category_miscellaneous-statistics",
+    type: "category",
+    name: "Miscellaneous Statistics",
+    icon: "M",
+    sortKey: 14
+  },
+  {
+    _id: "category_setting-up-a-wallet",
+    type: "category",
+    name: "Setting up a Wallet",
+    icon: "S",
+    sortKey: 15
+  },
+  {
+    _id: "category_running-a-node",
+    type: "category",
+    name: "Running a Node",
+    icon: "R",
+    sortKey: 16
+  },
+
+  {
+    _id: "category_online-courses",
+    type: "category",
+    name: "Online Courses",
+    icon: "P",
+    sortKey: 17
+  },
+  {
+    _id: "category_documentaries",
+    type: "category",
+    name: "Documentaries",
+    icon: "D",
+    sortKey: 18
+  },
+  {
+    _id: "category_video-presentations",
+    type: "category",
+    name: "Video Presentations",
+    icon: "M",
+    sortKey: 19
+  },
+  {
+    _id: "category_high-quality-blogs",
+    type: "category",
+    name: "High Quality Blogs",
+    icon: "T",
+    sortKey: 20
+  },
+  {
+    _id: "category_buying-bitcoins",
+    type: "category",
+    name: "Buying Bitcoins",
+    icon: "B",
+    sortKey: 21
+  },
+
+  {
+    _id: "category_advanced-trading",
+    type: "category",
+    name: "Advanced Trading",
+    icon: "V",
+    sortKey: 22
+  },
+  {
+    _id: "category_realtime-exchange-data",
+    type: "category",
+    name: "Realtime Exchange Data",
+    icon: "M",
+    sortKey: 23
+  },
+  {
+    _id: "category_tax-accounting",
+    type: "category",
+    name: "Tax Accounting",
+    icon: "D",
+    sortKey: 24
+  },
+  {
+    _id: "category_privacy",
+    type: "category",
+    name: "Privacy",
+    icon: "P",
+    sortKey: 25
+  },
+  {
+    _id: "category_lightning-network",
+    type: "category",
+    name: "Lightning Network",
+    icon: "D",
+    sortKey: 26
+  },
+  {
+    _id: "category_bitcoin-forks",
+    type: "category",
+    name: "Bitcoin Forks",
+    icon: "M",
+    sortKey: 27
+  },
+  {
+    _id: "category_crypto-careers",
+    type: "category",
+    name: "Crypto Careers",
+    icon: "S",
+    sortKey: 28
+  },
+  {
+    _id: "category_crypto-charity",
+    type: "category",
+    name: "Crypto Charity",
+    icon: "R",
+    sortKey: 29
   }
 ])
+
   .then(result => console.log("success", JSON.stringify(result, null, 2)))
   .catch(err => console.log("err", err))

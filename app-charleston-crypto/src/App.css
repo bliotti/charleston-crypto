@@ -4,7 +4,8 @@
 
 .App-logo {
   padding-top: 56px;
-  height: 100px;
+  height: 150px;
+  padding-bottom: 56px;
 }
 
 .App-header {
@@ -27,6 +28,8 @@
   text-decoration: none;
 }
 
-body {
-  background-image: url("/app-charleston-crypto/src/ChuckCity.jpg");
+.body {
+  background-image: url("./ChuckCityBW.jpg");
+  background-repeat: no-repeat;
+  background-blend-mode: lighten;
 }

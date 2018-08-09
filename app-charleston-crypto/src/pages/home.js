@@ -1,9 +1,6 @@
 import React from "react"
 import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
-
 import MenuAppBar from "../components/menuAppBar"
-import { Link } from "react-router-dom"
 import "../../src/App.css"
 import withDrawer from "../components/withDrawer"
 
@@ -14,7 +11,7 @@ const Home = () => (
       padding: 75
     }}
   >
-    <MenuAppBar title="Home" />
+    <MenuAppBar title="Charleston Crypto" />
 
     <center>
       <img
@@ -22,7 +19,7 @@ const Home = () => (
         className="App-logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Cryptocurrency_Logo.svg/3888px-Cryptocurrency_Logo.svg.png"
       />
-      <div style={{ paddingTop: 12 }}>
+      <div style={{ paddingTop: 12, paddingBottom: 150 }}>
         <Typography variant="display1">Charleston Crypto</Typography>
       </div>
       <div style={{ paddingTop: 12 }} />

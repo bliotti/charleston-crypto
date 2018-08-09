@@ -11,7 +11,8 @@ import { withStyles } from "@material-ui/core/styles"
 
 const styles = theme => ({
   root: {
-    width: "100%"
+    width: "100%",
+    backgroundColor: "black"
   },
   flex: {
     flex: 1
@@ -31,7 +32,7 @@ const MenuAppBar = props => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" className={classes.root}>
         <Toolbar>
           <React.Fragment>
             {props.backArrow ? (
