@@ -29,6 +29,14 @@ const withDrawer = function(PageComponent) {
             <ListItemText primary="Categories" />
           </ListItem>
         </Link>
+        <Link to="/resources" className="router-link">
+          <ListItem button onClick={props.toggleDrawer(props.open)}>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Resources" />
+          </ListItem>
+        </Link>
       </div>
     )
 
