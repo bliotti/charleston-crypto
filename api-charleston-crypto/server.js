@@ -3,6 +3,7 @@ const PORT = process.env.PORT
 const app = require("express")()
 const bodyParser = require("body-parser")
 const categories = require("./routes/categories")
+const resources = require("./routes/resources")
 const cors = require("cors")
 app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
@@ -10,6 +11,7 @@ app.use(cors({ credentials: true }))
 app.use(cors({ credentials: true }))
 
 categories(app)
+resources(app)
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message)

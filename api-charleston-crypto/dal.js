@@ -38,6 +38,23 @@ const getCategories = query => {
   )
 }
 
+const getResources = query => {
+  const [key, value] = not(isEmpty(query)) ? split(":", query) : ["", ""]
+  return getAllDocs(db, {
+    include_docs: true,
+    startkey: "resource",
+    endkey: "resource_\ufff0"
+  }).then(
+    resources =>
+      isEmpty(query)
+        ? resources
+        : filter(
+            resource => contains(value, propOr("", key, resource)),
+            resources
+          )
+  )
+}
+
 const getCategory = id => db.get(id)
 
-module.exports = { getCategory, getCategories }
+module.exports = { getCategory, getCategories, getResources }
