@@ -14,7 +14,7 @@ const {
 } = require("ramda")
 const COUCHDB_SERVER = process.env.COUCHDB_SERVER
 const COUCHDB_DBNAME = process.env.COUCHDB_DBNAME
-const DB_URL = `${COUCHDB_SERVER}${COUCHDB_DBNAME}`
+const DB_URL = `${COUCHDB_SERVER}/${COUCHDB_DBNAME}`
 
 const { getAllDocs } = require("./dal-helper")
 const pkGen = require("./lib/pkGen")

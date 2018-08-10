@@ -1,7 +1,8 @@
 import fetch from "isomorphic-fetch"
 import { SET_CATEGORIES } from "../constants"
 import { sort } from "ramda"
-const url = process.env.REACT_APP_BASE_URL + "/categories"
+//const url = process.env.REACT_APP_BASE_URL + "/categories"
+const url = "https://api-charleston-crypto-rtwdlgxafc.now.sh" + "/categories"
 
 export const setCategories = async (dispatch, getState) => {
   const categories = await fetch(url)

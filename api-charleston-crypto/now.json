@@ -1,0 +1,7 @@
+{
+  "env": {
+    "PORT": "@crypto-api-port",
+    "COUCHDB_SERVER": "@crypto-api-couch-db-server",
+    "COUCHDB_DBNAME": "@crypto-api-couch-db-name"
+  }
+}
