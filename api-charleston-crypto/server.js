@@ -8,8 +8,6 @@ const cors = require("cors")
 app.use(bodyParser.json())
 app.use(cors({ credentials: true }))
 
-app.use(cors({ credentials: true }))
-
 categories(app)
 resources(app)
 
