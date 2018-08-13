@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
+import SearchIcon from "@material-ui/icons/Search"
 import { ChevronLeft } from "@material-ui/icons"
 import { connect } from "react-redux"
 import { DRAWER_TOGGLED } from "../constants"
@@ -28,7 +29,7 @@ const styles = theme => ({
 })
 
 const MenuAppBar = props => {
-  const { classes } = props
+  const { classes, history } = props
 
   return (
     <div className={classes.root}>
@@ -56,6 +57,14 @@ const MenuAppBar = props => {
           <Typography variant="title" color="inherit" className={classes.flex}>
             {props.title}
           </Typography>
+          <IconButton
+            className={classes.firstButton}
+            color="inherit"
+            aria-label="Menu"
+            onClick={props.goToSearch(history)}
+          >
+            <SearchIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
@@ -66,7 +75,8 @@ const mapStateToProps = state => ({})
 
 const mapActionsToProps = dispatch => {
   return {
-    toggleDrawer: () => dispatch({ type: DRAWER_TOGGLED })
+    toggleDrawer: () => dispatch({ type: DRAWER_TOGGLED }),
+    goToSearch: history => e => history.push("/resources/search")
   }
 }
 

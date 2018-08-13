@@ -4,12 +4,15 @@ import "../../App.css"
 import withDrawer from "../../components/withDrawer"
 import TitlebarGridList from "../../components/titlebarGridList"
 
-const Categories = () => (
-  <div style={{ paddingTop: 56 }}>
-    <MenuAppBar title="Categories" />
-    {/* <CategoryListItems /> */}
-    <TitlebarGridList />
-  </div>
-)
+const Categories = props => {
+  const { history } = props
+  return (
+    <div style={{ paddingTop: 56 }}>
+      <MenuAppBar title="Categories" history={history} />
+      {/* <CategoryListItems /> */}
+      <TitlebarGridList />
+    </div>
+  )
+}
 
 export default withDrawer(Categories)

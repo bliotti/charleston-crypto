@@ -1,50 +1,28 @@
 import React from "react"
-import { connect } from "react-redux"
-import { map } from "ramda"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemIcon from "@material-ui/core/ListItemIcon"
+import ListItemText from "@material-ui/core/ListItemText"
+import Typography from "@material-ui/core/Typography"
+import Divider from "@material-ui/core/Divider"
+import Avatar from "@material-ui/core/Avatar"
+import { head } from "ramda"
 import { Link } from "react-router-dom"
-import { ListItem, Icon, ListItemText, List } from "@material-ui/core"
-import { withStyles } from "@material-ui/core/styles"
 
-const styles = {
-  card: {
-    minWidth: 275
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
-  }
-}
-
-const li = resource => {
-  return (
-    <Link
-      to={`/categories/${resource._id}`}
-      className="router-link"
-      key={resource._id}
-    >
+const ResourceListItem = resource => (
+  <div key={resource._id}>
+    <Link to={`/resources/${resource._id}`} className="router-link">
       <ListItem button>
-        <ListItemText primary={resource.title} />
+        <ListItemIcon>
+          <Avatar>{head(resource.title)}</Avatar>
+        </ListItemIcon>
+        <ListItemText>
+          <Typography variant="headline">{resource.title}</Typography>
+          <Typography variant="caption">{resource.title}</Typography>
+        </ListItemText>
       </ListItem>
     </Link>
-  )
-}
-
-const ResourceListItems = props => (
-  <div>
-    <List>{map(li, props.resources)}</List>
+    <Divider />
   </div>
 )
 
-const mapStateToProps = state => {
-  return { resources: state.resources }
-}
-
-export default withStyles(styles)(connect(mapStateToProps)(ResourceListItems))
+export default ResourceListItem
