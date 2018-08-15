@@ -5,7 +5,7 @@ import MenuAppBar from "../../components/menuAppBar"
 import withDrawer from "../../components/withDrawer"
 import ResourceListItem from "../../components/resourceListItem"
 import TextField from "@material-ui/core/TextField"
-import { DRAWER_TOGGLED, RESOURCES_SEARCH_TEXT_UPDATED } from "../../constants"
+import { RESOURCES_SEARCH_TEXT_UPDATED } from "../../constants"
 
 import {
   curry,

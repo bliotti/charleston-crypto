@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { map } from "ramda"
 import { Link } from "react-router-dom"
-import { ListItem, Icon, ListItemText, List } from "@material-ui/core"
+import { ListItem, ListItemText, List } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
 
 const styles = {

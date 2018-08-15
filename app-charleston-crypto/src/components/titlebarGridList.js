@@ -6,7 +6,6 @@ import GridListTile from "@material-ui/core/GridListTile"
 import GridListTileBar from "@material-ui/core/GridListTileBar"
 import { map } from "ramda"
 import { connect } from "react-redux"
-import { Icon } from "@material-ui/core"
 
 const styles = theme => ({
   root: {

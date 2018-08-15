@@ -7,8 +7,7 @@ import Tab from "@material-ui/core/Tab"
 import Typography from "@material-ui/core/Typography"
 import { connect } from "react-redux"
 import { getExchangeData } from "../action-creators/exchangeData"
-import { GET_EXCHANGE_DATA } from "../constants"
-import kmd from "../../node_modules/cryptocurrency-icons/dist/svg/color/kmd.svg"
+import { map } from "ramda"
 
 function TabContainer(props) {
   return (
@@ -25,6 +24,12 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   }
 })
+
+const li = coin => (
+  // <React.Fragment >
+  <Tab label={coin.symbol} key={coin.symbol} />
+  // </React.Fragment>
+)
 
 class ScrollableTabsButtonAuto extends React.Component {
   componentDidMount() {
@@ -44,13 +49,7 @@ class ScrollableTabsButtonAuto extends React.Component {
             scrollable
             scrollButtons="auto"
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
-            <Tab label="Item Four" />
-            <Tab label="Item Five" />
-            <Tab label="Item Six" />
-            <Tab label="Item Seven" />
+            {map(li, exchangeData)}
           </Tabs>
         </AppBar>
       </div>

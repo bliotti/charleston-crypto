@@ -2,7 +2,7 @@ import React from "react"
 import MenuAppBar from "../../components/menuAppBar"
 import "../../App.css"
 import withDrawer from "../../components/withDrawer"
-import TitlebarGridList from "../../components/titlebarGridList"
+// import TitlebarGridList from "../../components/titlebarGridList"
 import ResourceListItems from "../../components/resourceListItems"
 
 const Resources = props => {
