@@ -7,6 +7,6 @@ export const setCategories = async (dispatch, getState) => {
   const categories = await fetch(url)
     .then(res => res.json())
     .then(res => sort((a, b) => a.sortKey - b.sortKey, res))
-  console.log(categories)
+  // console.log(categories)
   dispatch({ type: SET_CATEGORIES, payload: categories })
 }

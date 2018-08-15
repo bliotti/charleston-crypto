@@ -8,7 +8,7 @@ const Categories = props => {
   const { history } = props
   return (
     <div style={{ paddingTop: 56 }}>
-      <MenuAppBar title="Categories" history={history} />
+      <MenuAppBar title="Categories" history={history} searchImage />
       {/* <CategoryListItems /> */}
       <TitlebarGridList />
     </div>

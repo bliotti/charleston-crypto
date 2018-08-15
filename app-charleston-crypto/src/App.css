@@ -29,7 +29,7 @@
 }
 
 .body {
-  background-image: url("./pictures/ChuckCityBW.jpg");
+  /* background-image: url("./pictures/ChuckCityBW.jpg"); */
   background-repeat: no-repeat;
   background-blend-mode: lighten;
 }

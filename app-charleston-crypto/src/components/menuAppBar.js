@@ -57,14 +57,16 @@ const MenuAppBar = props => {
           <Typography variant="title" color="inherit" className={classes.flex}>
             {props.title}
           </Typography>
-          <IconButton
-            className={classes.firstButton}
-            color="inherit"
-            aria-label="Menu"
-            onClick={props.goToSearch(history)}
-          >
-            <SearchIcon />
-          </IconButton>
+          {props.searchImage ? (
+            <IconButton
+              className={classes.firstButton}
+              color="inherit"
+              aria-label="Menu"
+              onClick={props.goToSearch(history)}
+            >
+              <SearchIcon />
+            </IconButton>
+          ) : null}
         </Toolbar>
       </AppBar>
     </div>

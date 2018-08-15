@@ -9,7 +9,7 @@ export const resources = (state = [], action) => {
   }
 }
 
-export const resourcesSearchText = (state = " ", action) => {
+export const resourcesSearchText = (state = "", action) => {
   switch (action.type) {
     case RESOURCES_SEARCH_TEXT_UPDATED:
       return action.payload

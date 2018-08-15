@@ -18,13 +18,19 @@ import {
   toLower
 } from "ramda"
 
-const searchResources = curry((searchTxt, r) =>
-  compose(
-    contains(toLower(searchTxt)),
-    map(word => (test(/,$/, word) ? word.substring(0, word.length - 1) : word)),
-    split(" "),
-    toLower
-  )(r.title)
+const searchResources = curry(
+  (searchTxt, r) =>
+    searchTxt === ""
+      ? true
+      : compose(
+          contains(toLower(searchTxt)),
+          map(
+            word =>
+              test(/,$/, word) ? word.substring(0, word.length - 1) : word
+          ),
+          split(" "),
+          toLower
+        )(r.title)
 )
 
 const ResourcesSearch = props => {

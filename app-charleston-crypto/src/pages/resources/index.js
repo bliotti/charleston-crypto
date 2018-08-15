@@ -10,7 +10,7 @@ const Resources = props => {
 
   return (
     <div style={{ paddingTop: 56 }}>
-      <MenuAppBar title="Resources" history={history} />
+      <MenuAppBar title="Resources" history={history} searchImage />
       <ResourceListItems />
       {/* <TitlebarGridList /> */}
     </div>
