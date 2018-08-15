@@ -7,11 +7,21 @@ import HomeIcon from "@material-ui/icons/Home"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import { DRAWER_TOGGLED } from "../constants"
+import SearchIcon from "@material-ui/icons/Search"
 
 const withDrawer = function(PageComponent) {
   const WrappedDrawerPageComponent = props => {
     const MenuListItems = (
       <div>
+        <Link to="/resources/search" className="router-link">
+          <ListItem button onClick={props.toggleDrawer(props.open)}>
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText primary="Search" />
+          </ListItem>
+        </Link>
+
         <Link to="/" className="router-link">
           <ListItem button onClick={props.toggleDrawer(props.open)}>
             <ListItemIcon>

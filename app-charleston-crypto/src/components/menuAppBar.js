@@ -13,7 +13,7 @@ import { withStyles } from "@material-ui/core/styles"
 const styles = theme => ({
   root: {
     width: "100%",
-    backgroundColor: "black"
+    backgroundColor: "grey"
   },
   flex: {
     flex: 1

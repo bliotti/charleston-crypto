@@ -27,7 +27,17 @@ const styles = theme => ({
 
 const li = coin => (
   // <React.Fragment >
-  <Tab label={coin.symbol} key={coin.symbol} />
+  <Tab
+    label={
+      coin.symbol +
+      " " +
+      coin.current_price.toLocaleString(undefined, {
+        style: "currency",
+        currency: "USD"
+      })
+    }
+    key={coin.symbol}
+  />
   // </React.Fragment>
 )
 

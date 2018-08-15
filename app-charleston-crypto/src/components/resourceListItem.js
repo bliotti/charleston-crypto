@@ -12,12 +12,12 @@ const ResourceListItem = resource => (
   <div key={resource._id}>
     <Link to={`/resources/${resource._id}`} className="router-link">
       <ListItem button>
-        <ListItemIcon>
+        {/* <ListItemIcon>
           <Avatar>{head(resource.title)}</Avatar>
-        </ListItemIcon>
+        </ListItemIcon> */}
         <ListItemText>
-          <Typography variant="headline">{resource.title}</Typography>
-          <Typography variant="caption">{resource.title}</Typography>
+          <Typography variant="body2">{resource.title}</Typography>
+          {/* <Typography variant="caption">{resource.title}</Typography> */}
         </ListItemText>
       </ListItem>
     </Link>
