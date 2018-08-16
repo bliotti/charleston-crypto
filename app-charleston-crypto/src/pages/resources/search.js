@@ -38,7 +38,7 @@ const ResourcesSearch = props => {
 
   return (
     <div style={{ paddingTop: 56 }}>
-      <MenuAppBar title="Search" backArrow history={history} />
+      <MenuAppBar title="Search" history={history} />
       <TextField
         label="Search"
         value={searchTxt}
