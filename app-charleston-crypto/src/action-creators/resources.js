@@ -16,21 +16,23 @@ const fetchHTMLURL = `${corsIt}${urlBTC}`
 //   dispatch({ type: SET_RESOURCES, payload: resources })
 // }
 
-export const getResources = async (dispatch, getState) => {
+export const getResources = (dispatch, getState) => {
   // const resources = await fetch(fetchHTMLURL)
   //   .then(res => res.text())
   //   .then(htmlText => parse(htmlText))
   // console.log(resources)
 
-  const resources = await scrapeIt(fetchHTMLURL, {
-    category: "h3",
+  scrapeIt(fetchHTMLURL, {
     item: {
       listItem: "section div div div ul li",
-
       data: {
-        category_name: "section div div div h3",
+        type: {
+          convert: () => "resource"
+        },
+        categoryID: {
+          convert: () => "category_"
+        },
         title: "a",
-        //closet: "ul",
         href: {
           selector: "a",
           attr: "href"
@@ -39,12 +41,12 @@ export const getResources = async (dispatch, getState) => {
     }
   }).then(({ data, response }) => {
     console.log(`Status Code: ${response.statusCode}`)
-    console.log(data)
+    console.log(data.item)
+    dispatch({ type: GET_RESOURCES, payload: data.item })
   })
 
   // const html = parse(resources)
   // console.log({ html })
-  dispatch({ type: GET_RESOURCES, payload: null })
 }
 
 //
