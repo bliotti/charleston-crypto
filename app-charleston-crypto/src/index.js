@@ -6,7 +6,8 @@ import "typeface-roboto"
 import store from "./store"
 import { Provider } from "react-redux"
 import { setCategories } from "./action-creators/categories"
-import { setResources } from "./action-creators/resources"
+// import { setResources } from "./action-creators/resources"
+import { getResources } from "./action-creators/resources"
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,4 +17,5 @@ ReactDOM.render(
 )
 
 store.dispatch(setCategories)
-store.dispatch(setResources)
+// store.dispatch(setResources)
+store.dispatch(getResources)

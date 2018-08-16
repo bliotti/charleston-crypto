@@ -57,4 +57,6 @@ const getResources = query => {
 
 const getCategory = id => db.get(id)
 
-module.exports = { getCategory, getCategories, getResources }
+const getResource = id => db.get(id)
+
+module.exports = { getCategory, getCategories, getResources, getResource }

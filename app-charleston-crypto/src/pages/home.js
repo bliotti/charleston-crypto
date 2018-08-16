@@ -15,7 +15,7 @@ const Home = props => {
           padding: 75
         }}
       >
-        <MenuAppBar title="Charleston Crypto" history={history} />
+        <MenuAppBar title="" history={history} />
 
         <center>
           <img
@@ -23,7 +23,7 @@ const Home = props => {
             className="App-logo"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Cryptocurrency_Logo.svg/3888px-Cryptocurrency_Logo.svg.png"
           />
-          <div style={{ paddingTop: 12, paddingBottom: 100 }}>
+          <div style={{ paddingTop: 12, paddingBottom: 80 }}>
             <Typography variant="display1">Charleston Crypto</Typography>
           </div>
           <div style={{ paddingTop: 12 }} />
