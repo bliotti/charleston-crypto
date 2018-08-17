@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import List from "@material-ui/core/List"
 import MenuAppBar from "../../components/menuAppBar"
 import withDrawer from "../../components/withDrawer"
-import ResourceListItem from "../../components/resourceListItem"
+import ResourceListItems from "../../components/resourceListItems"
 import TextField from "@material-ui/core/TextField"
 import { RESOURCES_SEARCH_TEXT_UPDATED } from "../../constants"
 
@@ -51,9 +51,7 @@ const ResourcesSearch = props => {
           marginBottom: 8
         }}
       />
-      <List>
-        {map(resource => ResourceListItem(resource), props.resources)}
-      </List>
+      <ResourceListItems />
     </div>
   )
 }

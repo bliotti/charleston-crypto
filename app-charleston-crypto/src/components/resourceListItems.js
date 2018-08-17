@@ -24,6 +24,8 @@ const styles = {
   }
 }
 
+//resouce index page
+
 const li = resource => (
   <Link
     to={`/resource/${resource._id}`}

@@ -5,8 +5,12 @@ const corsIt = "https://cors.io?"
 const fetchHTMLURL = `${corsIt}${urlBTC}`
 const uuid = require("uuid")
 
-// Optional List for fallback from CouchDB
-// const url = process.env.REACT_APP_BASE_URL + "/resources"
+// TODO
+// localStorage
+// grab Category - for filter and maybe icon avatar
+// grab Commented Title for secondary text on list
+// Set fallback - const url = process.env.REACT_APP_BASE_URL + "/resources"
+// PWA
 
 export const fetchResources = (dispatch, getState) => {
   scrapeIt(fetchHTMLURL, {
