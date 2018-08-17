@@ -1,5 +1,6 @@
 import { GET_RESOURCES } from "../constants"
-import { isNil } from "ramda"
+import { isNil, map } from "ramda"
+import commentPuller from "../lib/commentPuller"
 const scrapeIt = require("scrape-it")
 const urlBTC = process.env.REACT_APP_BTC_URL
 const corsIt = "https://cors.io?"
@@ -49,13 +50,16 @@ export const fetchResources = (dispatch, getState) => {
       console.log(`Status Code: ${response.statusCode}`)
       console.log(data.item)
 
-      window.localStorage.setItem("extResources", JSON.stringify(data.item))
+      const mod = map(commentPuller, data.item)
+      console.log(mod)
+
+      window.localStorage.setItem("extResources", JSON.stringify(mod))
       window.localStorage.setItem(
         "extResourcesSetTime",
         JSON.stringify(Date.now())
       )
 
-      dispatch({ type: GET_RESOURCES, payload: data.item })
+      dispatch({ type: GET_RESOURCES, payload: mod })
     })
   } else {
     const extResources =
