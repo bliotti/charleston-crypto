@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search"
 import { ChevronLeft } from "@material-ui/icons"
 import { connect } from "react-redux"
 import { DRAWER_TOGGLED } from "../constants"
+import PositionedPopper from "./popper"
 import { withStyles } from "@material-ui/core/styles"
 
 const styles = theme => ({
@@ -32,43 +33,42 @@ const MenuAppBar = props => {
   const { classes, history } = props
 
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" className={classes.root}>
-        <Toolbar>
-          <React.Fragment>
-            {props.backArrow ? (
-              <IconButton onClick={e => props.history.goBack()}>
-                <ChevronLeft
+    <div className="underlay">
+      <div className={classes.root}>
+        <AppBar position="fixed" className={classes.root}>
+          <Toolbar>
+            <React.Fragment>
+              {props.backArrow ? (
+                <IconButton onClick={e => props.history.goBack()}>
+                  <ChevronLeft
+                    className={classes.firstButton}
+                    style={{ fontSize: "30", color: "white" }}
+                  />
+                </IconButton>
+              ) : (
+                <IconButton
                   className={classes.firstButton}
-                  style={{ fontSize: "30", color: "white" }}
-                />
-              </IconButton>
-            ) : (
-              <IconButton
-                className={classes.firstButton}
-                color="inherit"
-                aria-label="Menu"
-                onClick={props.toggleDrawer}
-              >
-                <MenuIcon />
-              </IconButton>
-            )}
-          </React.Fragment>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            {props.title}
-          </Typography>
-          {props.searchImage ? (
-            <IconButton
-              className={classes.firstButton}
+                  color="inherit"
+                  aria-label="Menu"
+                  onClick={props.toggleDrawer}
+                >
+                  <MenuIcon />
+                </IconButton>
+              )}
+            </React.Fragment>
+            <Typography
+              variant="title"
               color="inherit"
-              aria-label="Menu"
-              onClick={props.goToSearch(history)}
+              className={classes.flex}
             >
-              <SearchIcon />
-            </IconButton>
-          ) : null}
-        </Toolbar>
-      </AppBar>
+              {props.title}
+            </Typography>
+            {props.searchImage ? (
+              <PositionedPopper className="overlay" />
+            ) : null}
+          </Toolbar>
+        </AppBar>
+      </div>
     </div>
   )
 }

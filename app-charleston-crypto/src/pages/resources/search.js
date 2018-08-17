@@ -4,6 +4,7 @@ import List from "@material-ui/core/List"
 import MenuAppBar from "../../components/menuAppBar"
 import withDrawer from "../../components/withDrawer"
 import ResourceListItems from "../../components/resourceListItems"
+import ResourceListItem from "../../components/resourceListItem"
 import TextField from "@material-ui/core/TextField"
 import { RESOURCES_SEARCH_TEXT_UPDATED } from "../../constants"
 
@@ -38,7 +39,7 @@ const ResourcesSearch = props => {
 
   return (
     <div style={{ paddingTop: 56 }}>
-      <MenuAppBar title="Resources" backArrow history={history} />
+      <MenuAppBar title="Resources" backArrow history={history} searchImage />
       <TextField
         label="Search"
         value={searchTxt}
@@ -51,7 +52,12 @@ const ResourcesSearch = props => {
           marginBottom: 8
         }}
       />
+
       <ResourceListItems />
+
+      {/* <List>
+        {map(resource => ResourceListItem(resource), props.resources)}
+      </List> */}
     </div>
   )
 }
