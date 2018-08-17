@@ -24,25 +24,41 @@ export const fetchResources = (dispatch, getState) => {
   ) {
     scrapeIt(fetchHTMLURL, {
       item: {
-        listItem: "section div div div ul li",
+        listItem: "section div div div ul",
         data: {
+          categoryID: {
+            listItem: "a",
+            data: {
+              categoryID: {
+                convert: () => "category_"
+              }
+            }
+          },
           type: {
             convert: () => "resource"
           },
-          categoryID: {
-            convert: () => "category_"
-          },
           _id: {
-            convert: () => `resource_${uuid.v4()}`
+            listItem: "a",
+            data: {
+              _id: {
+                convert: () => `resource_${uuid.v4()}`
+              }
+            }
           },
           titleWithComment: {
-            selector: "a",
-            closest: "li"
+            listItem: "li"
           },
-          title: "a",
+          title: {
+            listItem: "a"
+          },
           href: {
-            selector: "a",
-            attr: "href"
+            listItem: "li",
+            data: {
+              url: {
+                selector: "a",
+                attr: "href"
+              }
+            }
           }
         }
       }
@@ -50,8 +66,9 @@ export const fetchResources = (dispatch, getState) => {
       console.log(`Status Code: ${response.statusCode}`)
       console.log(data.item)
 
-      const mod = map(commentPuller, data.item)
-      console.log(mod)
+      // const mod = map(commentPuller, data.item)
+      const mod = data.item
+      console.log(JSON.stringify(mod))
 
       window.localStorage.setItem("extResources", JSON.stringify(mod))
       window.localStorage.setItem(
