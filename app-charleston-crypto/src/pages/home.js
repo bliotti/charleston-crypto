@@ -12,11 +12,11 @@ const Home = props => {
       <div
         className="body"
         style={{
-          padding: 75
+          paddingTop: 56
         }}
       >
         <MenuAppBar title="" history={history} />
-
+        <ScrollableTabsButtonAuto />
         <center>
           <img
             alt="home icon"
@@ -29,7 +29,6 @@ const Home = props => {
           <div style={{ paddingTop: 12 }} />
         </center>
       </div>
-      <ScrollableTabsButtonAuto />
     </React.Fragment>
   )
 }

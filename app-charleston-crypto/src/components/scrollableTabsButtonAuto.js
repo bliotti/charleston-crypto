@@ -26,7 +26,6 @@ const styles = theme => ({
 })
 
 const li = coin => (
-  // <React.Fragment >
   <Tab
     label={
       coin.symbol +
@@ -38,7 +37,6 @@ const li = coin => (
     }
     key={coin.symbol}
   />
-  // </React.Fragment>
 )
 
 class ScrollableTabsButtonAuto extends React.Component {

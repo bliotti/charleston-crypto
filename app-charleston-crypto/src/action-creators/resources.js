@@ -1,9 +1,9 @@
 import { GET_RESOURCES } from "../constants"
 const scrapeIt = require("scrape-it")
-
 const urlBTC = process.env.REACT_APP_BTC_URL
 const corsIt = "https://cors.io?"
 const fetchHTMLURL = `${corsIt}${urlBTC}`
+const uuid = require("uuid")
 
 // Optional List for fallback from CouchDB
 // const url = process.env.REACT_APP_BASE_URL + "/resources"
@@ -18,6 +18,9 @@ export const fetchResources = (dispatch, getState) => {
         },
         categoryID: {
           convert: () => "category_"
+        },
+        _id: {
+          convert: () => `resource_${uuid.v4()}`
         },
         titleWithComment: {
           selector: "a",
