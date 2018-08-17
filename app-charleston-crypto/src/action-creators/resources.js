@@ -14,37 +14,39 @@ const uuid = require("uuid")
 // Set fallback - const url = process.env.REACT_APP_BASE_URL + "/resources"
 // PWA
 
-const amountOfTimeAllowedBeforeScrapedResourcesShouldBeChecked = 1000 * 60 * 60
+const amountOfTimeAllowedBeforeScrapedResourcesShouldBeChecked = 1 //1000 * 60 * 60
 
-export const fetchResources = (dispatch, getState) => {
+export const fetchResources = async (dispatch, getState) => {
   if (
     isNil(window.localStorage.getItem("extResources")) ||
     JSON.parse(window.localStorage.getItem("extResourcesSetTime")) <
       Date.now() - amountOfTimeAllowedBeforeScrapedResourcesShouldBeChecked
   ) {
-    scrapeIt(fetchHTMLURL, {
+    const xxxx = await scrapeIt(fetchHTMLURL, {
       item: {
         listItem: "section div div div ul",
         data: {
-          categoryID: {
-            listItem: "a",
-            data: {
-              categoryID: {
-                convert: () => "category_"
-              }
-            }
-          },
-          type: {
-            convert: () => "resource"
-          },
-          _id: {
-            listItem: "a",
-            data: {
-              _id: {
-                convert: () => `resource_${uuid.v4()}`
-              }
-            }
-          },
+          /*
+          // categoryID: {
+          //   listItem: "a",
+          //   data: {
+          //     categoryID: {
+          //       convert: () => "category_"
+          //     }
+          //   }
+          // },
+          // type: {
+          //   convert: () => "resource"
+          // },
+          // _id: {
+          //   listItem: "a",
+          //   data: {
+          //     _id: {
+          //       convert: () => `resource_${uuid.v4()}`
+          //     }
+          //   }
+          // },
+*/
           titleWithComment: {
             listItem: "li"
           },
@@ -67,17 +69,21 @@ export const fetchResources = (dispatch, getState) => {
       console.log(data.item)
 
       // const mod = map(commentPuller, data.item)
+
       const mod = data.item
       console.log(JSON.stringify(mod))
 
-      window.localStorage.setItem("extResources", JSON.stringify(mod))
-      window.localStorage.setItem(
-        "extResourcesSetTime",
-        JSON.stringify(Date.now())
-      )
+      /*
+      // window.localStorage.setItem("extResources", JSON.stringify(mod))
+      // window.localStorage.setItem(
+      //   "extResourcesSetTime",
+      //   JSON.stringify(Date.now())
+      // )
+      */
 
-      dispatch({ type: GET_RESOURCES, payload: mod })
+      // dispatch({ type: GET_RESOURCES, payload: mod })
     })
+    console.log({ xxxx })
   } else {
     const extResources =
       JSON.parse(window.localStorage.getItem("extResources")) || []
