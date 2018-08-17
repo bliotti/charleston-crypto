@@ -15,7 +15,7 @@ const Home = props => {
           paddingTop: 56
         }}
       >
-        <MenuAppBar title="" history={history} />
+        <MenuAppBar title="" history={history} searchImage />
         <ScrollableTabsButtonAuto />
         <center>
           <img

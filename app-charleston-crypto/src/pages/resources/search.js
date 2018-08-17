@@ -40,7 +40,9 @@ const ResourcesSearch = props => {
     <div style={{ paddingTop: 56 }}>
       <MenuAppBar title="Resources" backArrow history={history} />
       <TextField
+        id="search"
         label="Search"
+        type="search"
         value={searchTxt}
         onChange={e => onTextFieldChange(e.target.value)}
         margin="normal"
