@@ -30,7 +30,7 @@ const searchResources = curry(
           ),
           split(" "),
           toLower
-        )(r.title)
+        )(r.titleWithComment)
 )
 
 const ResourcesSearch = props => {
