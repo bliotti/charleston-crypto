@@ -16,13 +16,13 @@ const uuid = require("uuid")
 
 const amountOfTimeAllowedBeforeScrapedResourcesShouldBeChecked = 1 //1000 * 60 * 60
 
-export const fetchResources = async (dispatch, getState) => {
+export const fetchResources = (dispatch, getState) => {
   if (
     isNil(window.localStorage.getItem("extResources")) ||
     JSON.parse(window.localStorage.getItem("extResourcesSetTime")) <
       Date.now() - amountOfTimeAllowedBeforeScrapedResourcesShouldBeChecked
   ) {
-    const xxxx = await scrapeIt(fetchHTMLURL, {
+    scrapeIt(fetchHTMLURL, {
       item: {
         listItem: "section div div div ul",
         data: {
@@ -65,25 +65,21 @@ export const fetchResources = async (dispatch, getState) => {
         }
       }
     }).then(({ data, response }) => {
-      console.log(`Status Code: ${response.statusCode}`)
-      console.log(data.item)
+      // console.log(`Status Code: ${response.statusCode}`)
+      // console.log(data.item)
 
       // const mod = map(commentPuller, data.item)
 
-      const mod = data.item
-      console.log(JSON.stringify(mod))
-
-      /*
+      // console.log(JSON.stringify(mod))
       // window.localStorage.setItem("extResources", JSON.stringify(mod))
       // window.localStorage.setItem(
       //   "extResourcesSetTime",
       //   JSON.stringify(Date.now())
       // )
-      */
-
       // dispatch({ type: GET_RESOURCES, payload: mod })
+      const mod = data.item
+      scraperTwo(dispatch, getState, mod)
     })
-    console.log({ xxxx })
   } else {
     const extResources =
       JSON.parse(window.localStorage.getItem("extResources")) || []
@@ -92,4 +88,15 @@ export const fetchResources = async (dispatch, getState) => {
 
     dispatch({ type: GET_RESOURCES, payload: extResources })
   }
+}
+
+const scraperTwo = (dispatch, getState, mod) => {
+  scrapeIt(fetchHTMLURL, {
+    category: {
+      listItem: "section div div div h3"
+    }
+  }).then(({ data }) => {
+    console.log("scraper1", JSON.stringify(mod))
+    console.log("scraper2", JSON.stringify(data.category))
+  })
 }
