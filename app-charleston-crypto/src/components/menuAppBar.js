@@ -1,19 +1,19 @@
-import React from "react"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import IconButton from "@material-ui/core/IconButton"
-import MenuIcon from "@material-ui/icons/Menu"
-import SearchIcon from "@material-ui/icons/Search"
-import { ChevronLeft } from "@material-ui/icons"
-import { connect } from "react-redux"
-import { DRAWER_TOGGLED } from "../constants"
-import { withStyles } from "@material-ui/core/styles"
+import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import SearchIcon from '@material-ui/icons/Search'
+import { ChevronLeft } from '@material-ui/icons'
+import { connect } from 'react-redux'
+import { DRAWER_TOGGLED } from '../constants'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   root: {
-    width: "100%",
-    backgroundColor: "darkSlateGrey"
+    width: '100%',
+    backgroundColor: 'darkSlateGrey'
   },
   flex: {
     flex: 1
@@ -40,10 +40,10 @@ const MenuAppBar = props => {
               <IconButton onClick={e => props.history.goBack()}>
                 <ChevronLeft
                   className={classes.firstButton}
-                  style={{ fontSize: "30", color: "white" }}
+                  style={{ fontSize: '30', color: 'white' }}
                 />
               </IconButton>
-            ) : (
+            ) : !props.menu ? (
               <IconButton
                 className={classes.firstButton}
                 color="inherit"
@@ -52,7 +52,7 @@ const MenuAppBar = props => {
               >
                 <MenuIcon />
               </IconButton>
-            )}
+            ) : null}
           </React.Fragment>
           <Typography variant="title" color="inherit" className={classes.flex}>
             {props.title}
@@ -78,7 +78,7 @@ const mapStateToProps = state => ({})
 const mapActionsToProps = dispatch => {
   return {
     toggleDrawer: () => dispatch({ type: DRAWER_TOGGLED }),
-    goToSearch: history => e => history.push("/resources/search")
+    goToSearch: history => e => history.push('/resources/search')
   }
 }
 

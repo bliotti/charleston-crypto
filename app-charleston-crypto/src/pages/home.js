@@ -5,19 +5,42 @@ import '../../src/App.css'
 import withDrawer from '../components/withDrawer'
 import ScrollableTabsButtonAuto from '../components/scrollableTabsButtonAuto'
 import TitlebarGridList from '../components/titlebarGridList'
+import { connect } from 'react-redux'
+import IconButton from '@material-ui/core/IconButton'
+import SearchIcon from '@material-ui/icons/Search'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    backgroundColor: 'darkSlateGrey'
+  },
+  flex: {
+    flex: 1
+  },
+  firstButton: {
+    marginLeft: -12,
+    marginRight: 12
+  },
+  lastButton: {
+    marginLeft: 12,
+    marginRight: -12
+  }
+})
 
 const Home = props => {
-  const { history } = props
+  const { history, classes, goToSearch } = props
   return (
     <React.Fragment>
       <div
         className="body"
         style={{
-          paddingTop: 56
+          paddingTop: 0
         }}
       >
-        <MenuAppBar title="" history={history} searchImage />
-        <ScrollableTabsButtonAuto />
+        {/* <MenuAppBar title="" history={history} searchImage /> */}
+        <ScrollableTabsButtonAuto history={history} />
+
         <center>
           <img
             alt="home icon"
@@ -31,8 +54,12 @@ const Home = props => {
           <TitlebarGridList />
         </center>
       </div>
+      <br />
     </React.Fragment>
   )
 }
+const mapStateToProps = state => ({})
 
-export default withDrawer(Home)
+const connector = connect(mapStateToProps)
+
+export default connector(withStyles(styles)(Home))
