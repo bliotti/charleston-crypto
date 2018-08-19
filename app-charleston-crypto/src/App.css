@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  padding-top: 40px;
+  padding-top: 45px;
   height: 170px;
   padding-bottom: 56px;
 }
@@ -29,7 +29,8 @@
 }
 
 .body {
-  /* background-image: url("./pictures/ChuckCityBW.jpg"); */
+  /* background-image: url('./pictures/ChuckCityBW.jpg'); */
+  background-image: cross-fade();
   background-repeat: no-repeat;
   background-blend-mode: lighten;
 }

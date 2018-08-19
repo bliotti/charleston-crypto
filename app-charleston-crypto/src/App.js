@@ -5,7 +5,8 @@ import Home from './pages/home'
 import Categories from './pages/categories/index'
 import Resources from './pages/resources/index'
 import ResourcesSearch from './pages/resources/search'
-import { MarketViewTheme, MarketView } from './pages/market/index'
+import Market from './pages/market/index'
+import DashBoardPage from './pages/dash/index'
 
 class App extends Component {
   render() {
@@ -16,8 +17,8 @@ class App extends Component {
           <Route exact path="/categories" component={Categories} />
           <Route exact path="/resources/search" component={ResourcesSearch} />
           <Route exact path="/resources" component={Resources} />
-          <Route exact path="/marketview" component={MarketView} />
-          <Route exact path="/marketviewtheme" component={MarketViewTheme} />
+          <Route exact path="/market" component={Market} />
+          <Route exact path="/dashboardpage" component={DashBoardPage} />
         </Switch>
       </BrowserRouter>
     )

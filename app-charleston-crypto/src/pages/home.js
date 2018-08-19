@@ -7,7 +7,7 @@ import ScrollableTabsButtonAuto from '../components/scrollableTabsButtonAuto'
 import TitlebarGridList from '../components/titlebarGridList'
 import SimpleBottomNavigation from '../components/SimpleBottomNavigation'
 import { connect } from 'react-redux'
-import IconButton from '@material-ui/core/IconButton'
+import { Link } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -48,16 +48,22 @@ const Home = props => {
             className="App-logo"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Cryptocurrency_Logo.svg/3888px-Cryptocurrency_Logo.svg.png"
           />
+
           <div style={{ paddingTop: 0, paddingBottom: 80 }}>
             <Typography variant="display2">Charleston Crypto</Typography>
             <br />
-
             <Typography variant="title">
               Your Guide to Charleston's CryptoCurrency
             </Typography>
             <Typography variant="title">& Blockchain Community</Typography>
           </div>
-          <div style={{ paddingTop: 12 }} />
+
+          <Link to="/dashboardpage"> Dashboard </Link>
+          <br />
+          <Link to="/market"> Market </Link>
+
+          <div style={{ paddingTop: 6 }} />
+
           <div
             style={{
               borderTop: '1px solid',
@@ -65,6 +71,7 @@ const Home = props => {
               borderColor: '#9e9e9e'
             }}
           />
+
           <TitlebarGridList />
         </center>
       </div>

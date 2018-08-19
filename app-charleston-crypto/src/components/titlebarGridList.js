@@ -14,7 +14,7 @@ const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: 'transparent'
   },
   gridList: {
     width: '96%',
@@ -22,7 +22,8 @@ const styles = theme => ({
     spacing: '-2%'
   },
   icon: {
-    color: 'rgba(255, 255, 255, 0.54)'
+    // color: 'rgba(255, 255, 255, 0.54)'
+    color: 'rgba(255, 255, 255, 0.01)'
   }
 })
 
@@ -31,7 +32,10 @@ const li = tile => {
     <GridListTile key={tile._id}>
       {/* <img src={tile.img} alt={tile.name} /> */}
       {/* <Icon style={{ color: "grey" }}>{tile.icon}</Icon> */}
-      <GridListTileBar subtitle={tile.name} multiline />
+      <GridListTileBar
+        subtitle={tile.name}
+        style={{ backgroundColor: 'black' }}
+      />
     </GridListTile>
   )
 }
