@@ -17,5 +17,5 @@ ReactDOM.render(
 )
 
 registerServiceWorker()
-store.dispatch(setCategories)
+// store.dispatch(setCategories)
 store.dispatch(fetchResources)

@@ -1,4 +1,16 @@
-import { merge, replace, unnest, map, append } from 'ramda'
+import { merge, replace, unnest, map, append, head } from 'ramda'
+
+const formatCategoriesObject = fetch2 =>
+  map(
+    arr => ({
+      _id: `category_${replace(/:\s/g, '', arr)}`,
+      key: `category_${replace(/:\s/g, '', arr)}`,
+      name: `${replace(/:/g, '', arr)}`,
+      icon: head(arr),
+      type: 'category'
+    }),
+    fetch2
+  )
 
 const formatResourceObject = (fetch1, fetch2) => {
   const links = map(i => {
@@ -71,4 +83,4 @@ const formatResourceObject = (fetch1, fetch2) => {
   return list3
 }
 
-export default formatResourceObject
+export { formatResourceObject, formatCategoriesObject }

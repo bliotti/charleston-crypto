@@ -1,5 +1,8 @@
-import { GET_RESOURCES } from '../constants'
-import formatResourceObject from './formatResourceObject'
+import { GET_RESOURCES, SET_CATEGORIES } from '../constants'
+import {
+  formatResourceObject,
+  formatCategoriesObject
+} from './formatResourceObject'
 
 const scrapeIt = require('scrape-it')
 
@@ -42,6 +45,13 @@ const scraper = dispatch =>
 
     scrapeIt(fetchHTMLURL, scrapeParseObjTwo).then(({ data }) => {
       const scrapedResourcesTwo = data.category
+      const mappedCategories = formatCategoriesObject(scrapedResourcesTwo)
+      console.log(mappedCategories)
+      window.localStorage.setItem(
+        'extCategories',
+        JSON.stringify(mappedCategories)
+      )
+      dispatch({ type: SET_CATEGORIES, payload: mappedCategories })
 
       const combinedScrapedResources = formatResourceObject(
         scrapedResourcesOne,

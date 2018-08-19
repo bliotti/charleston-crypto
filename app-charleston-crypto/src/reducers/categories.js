@@ -1,4 +1,4 @@
-import { SET_CATEGORIES } from "../constants"
+import { SET_CATEGORIES } from '../constants'
 
 export const categories = (state = [], action) => {
   switch (action.type) {

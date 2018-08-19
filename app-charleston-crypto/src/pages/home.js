@@ -1,9 +1,10 @@
-import React from "react"
-import Typography from "@material-ui/core/Typography"
-import MenuAppBar from "../components/menuAppBar"
-import "../../src/App.css"
-import withDrawer from "../components/withDrawer"
-import ScrollableTabsButtonAuto from "../components/scrollableTabsButtonAuto"
+import React from 'react'
+import Typography from '@material-ui/core/Typography'
+import MenuAppBar from '../components/menuAppBar'
+import '../../src/App.css'
+import withDrawer from '../components/withDrawer'
+import ScrollableTabsButtonAuto from '../components/scrollableTabsButtonAuto'
+import TitlebarGridList from '../components/titlebarGridList'
 
 const Home = props => {
   const { history } = props
@@ -27,6 +28,7 @@ const Home = props => {
             <Typography variant="display1">Charleston Crypto</Typography>
           </div>
           <div style={{ paddingTop: 12 }} />
+          <TitlebarGridList />
         </center>
       </div>
     </React.Fragment>
