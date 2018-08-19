@@ -1,11 +1,11 @@
-import React from "react"
-import { connect } from "react-redux"
-import List from "@material-ui/core/List"
-import MenuAppBar from "../../components/menuAppBar"
-import withDrawer from "../../components/withDrawer"
-import ResourceListItem from "../../components/resourceListItem"
-import TextField from "@material-ui/core/TextField"
-import { RESOURCES_SEARCH_TEXT_UPDATED } from "../../constants"
+import React from 'react'
+import { connect } from 'react-redux'
+import List from '@material-ui/core/List'
+import MenuAppBar from '../../components/menuAppBar'
+import withDrawer from '../../components/withDrawer'
+import ResourceListItem from '../../components/resourceListItem'
+import TextField from '@material-ui/core/TextField'
+import { RESOURCES_SEARCH_TEXT_UPDATED } from '../../constants'
 
 import {
   curry,
@@ -16,11 +16,11 @@ import {
   test,
   split,
   toLower
-} from "ramda"
+} from 'ramda'
 
 const searchResources = curry(
   (searchTxt, r) =>
-    searchTxt === ""
+    searchTxt === ''
       ? true
       : compose(
           contains(toLower(searchTxt)),
@@ -28,9 +28,9 @@ const searchResources = curry(
             word =>
               test(/,$/, word) ? word.substring(0, word.length - 1) : word
           ),
-          split(" "),
+          split(' '),
           toLower
-        )(r.titleWithComment)
+        )(r.titleWithComment + ' ' + r.category)
 )
 
 const ResourcesSearch = props => {
@@ -47,7 +47,7 @@ const ResourcesSearch = props => {
         onChange={e => onTextFieldChange(e.target.value)}
         margin="normal"
         style={{
-          width: "50%",
+          width: '50%',
           marginLeft: 16,
           MarginTop: 16,
           marginBottom: 8

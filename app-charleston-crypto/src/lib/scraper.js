@@ -1,4 +1,3 @@
-/* global window */
 import { GET_RESOURCES } from '../constants'
 import formatResourceObject from './formatResourceObject'
 
