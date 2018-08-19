@@ -17,8 +17,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   },
   gridList: {
-    width: 800,
-    height: 180 * 5
+    width: '96%',
+    height: 'auto',
+    spacing: '-2%'
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)'
@@ -30,7 +31,7 @@ const li = tile => {
     <GridListTile key={tile._id}>
       {/* <img src={tile.img} alt={tile.name} /> */}
       {/* <Icon style={{ color: "grey" }}>{tile.icon}</Icon> */}
-      <GridListTileBar title={tile.name} style={{ color: 'green' }} />
+      <GridListTileBar subtitle={tile.name} multiline />
     </GridListTile>
   )
 }
@@ -40,8 +41,7 @@ const TitlebarGridList = props => {
 
   return (
     <div className={props.classes.root}>
-      <GridList cellHeight={40} className={props.classes.gridList}>
-        <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }} />
+      <GridList cols={3} cellHeight={80} className={props.classes.gridList}>
         {map(li, props.categories)}
       </GridList>
     </div>

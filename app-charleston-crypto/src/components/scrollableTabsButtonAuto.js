@@ -44,13 +44,13 @@ class ScrollableTabsButtonAuto extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="stickey" color="default">
           <Tabs
             value={0}
             indicatorColor="primary"
             textColor="primary"
             scrollable
-            scrollButtons="Off"
+            scrollButtons="off"
           >
             <Tab
               icon={

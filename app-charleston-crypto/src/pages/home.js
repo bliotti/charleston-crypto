@@ -5,6 +5,7 @@ import '../../src/App.css'
 import withDrawer from '../components/withDrawer'
 import ScrollableTabsButtonAuto from '../components/scrollableTabsButtonAuto'
 import TitlebarGridList from '../components/titlebarGridList'
+import SimpleBottomNavigation from '../components/SimpleBottomNavigation'
 import { connect } from 'react-redux'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
@@ -47,14 +48,28 @@ const Home = props => {
             className="App-logo"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Cryptocurrency_Logo.svg/3888px-Cryptocurrency_Logo.svg.png"
           />
-          <div style={{ paddingTop: 12, paddingBottom: 80 }}>
-            <Typography variant="display1">Charleston Crypto</Typography>
+          <div style={{ paddingTop: 0, paddingBottom: 80 }}>
+            <Typography variant="display2">Charleston Crypto</Typography>
+            <br />
+
+            <Typography variant="title">
+              Your Guide to Charleston's CryptoCurrency
+            </Typography>
+            <Typography variant="title">& Blockchain Community</Typography>
           </div>
           <div style={{ paddingTop: 12 }} />
+          <div
+            style={{
+              borderTop: '1px solid',
+              paddingTop: '12px',
+              borderColor: '#9e9e9e'
+            }}
+          />
           <TitlebarGridList />
         </center>
       </div>
       <br />
+      <SimpleBottomNavigation />
     </React.Fragment>
   )
 }
