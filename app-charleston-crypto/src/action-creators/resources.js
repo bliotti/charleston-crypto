@@ -1,11 +1,11 @@
 import { GET_RESOURCES } from "../constants"
-import { isNil, map } from "ramda"
-import commentPuller from "../lib/commentPuller"
+import { isNil } from "ramda"
+import formatResourceObject from "../lib/formatResourceObject"
+
 const scrapeIt = require("scrape-it")
 const urlBTC = process.env.REACT_APP_BTC_URL
 const corsIt = "https://cors.io?"
 const fetchHTMLURL = `${corsIt}${urlBTC}`
-const uuid = require("uuid")
 
 // TODO
 // localStorage - COMPLETE
@@ -26,27 +26,6 @@ export const fetchResources = (dispatch, getState) => {
       item: {
         listItem: "section div div div ul",
         data: {
-          /*
-          // categoryID: {
-          //   listItem: "a",
-          //   data: {
-          //     categoryID: {
-          //       convert: () => "category_"
-          //     }
-          //   }
-          // },
-          // type: {
-          //   convert: () => "resource"
-          // },
-          // _id: {
-          //   listItem: "a",
-          //   data: {
-          //     _id: {
-          //       convert: () => `resource_${uuid.v4()}`
-          //     }
-          //   }
-          // },
-*/
           titleWithComment: {
             listItem: "li"
           },
@@ -64,39 +43,51 @@ export const fetchResources = (dispatch, getState) => {
           }
         }
       }
-    }).then(({ data, response }) => {
-      // console.log(`Status Code: ${response.statusCode}`)
-      // console.log(data.item)
+    }).then(({ data }) => {
+      const scrapedResourcesOne = data.item
 
-      // const mod = map(commentPuller, data.item)
-
-      // console.log(JSON.stringify(mod))
-      // window.localStorage.setItem("extResources", JSON.stringify(mod))
-      // window.localStorage.setItem(
-      //   "extResourcesSetTime",
-      //   JSON.stringify(Date.now())
-      // )
-      // dispatch({ type: GET_RESOURCES, payload: mod })
-      const mod = data.item
-      scraperTwo(dispatch, getState, mod)
+      scraperTwo(dispatch, getState, scrapedResourcesOne)
     })
   } else {
+    //
+    // PULLING FROM LOCAL STORAGE... NO FETCHING
+    //
+
     const extResources =
       JSON.parse(window.localStorage.getItem("extResources")) || []
-
     console.log("Pulled from storage")
-
     dispatch({ type: GET_RESOURCES, payload: extResources })
   }
 }
 
-const scraperTwo = (dispatch, getState, mod) => {
+const scraperTwo = (dispatch, getState, scrapedResourcesOne) => {
+  //
+  // SCRAPES CATEGORIES
+  // COMBINED SOURCES
+  // SETS LOCAL STORAGE
+  //
+
   scrapeIt(fetchHTMLURL, {
     category: {
       listItem: "section div div div h3"
     }
   }).then(({ data }) => {
-    console.log("scraper1", JSON.stringify(mod))
-    console.log("scraper2", JSON.stringify(data.category))
+    const scrapedResourcesTwo = data.category
+
+    const combinedScrapedResources = formatResourceObject(
+      scrapedResourcesOne,
+      scrapedResourcesTwo
+    )
+
+    window.localStorage.setItem(
+      "extResources",
+      JSON.stringify(combinedScrapedResources)
+    )
+    window.localStorage.setItem(
+      "extResourcesSetTime",
+      JSON.stringify(Date.now())
+    )
+
+    dispatch({ type: GET_RESOURCES, payload: combinedScrapedResources })
   })
 }
