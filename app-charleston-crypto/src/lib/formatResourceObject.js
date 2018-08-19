@@ -1,4 +1,4 @@
-import { merge, replace, unnest, map, append } from "ramda"
+import { merge, replace, unnest, map, append } from 'ramda'
 
 const formatResourceObject = (fetch1, fetch2) => {
   const links = map(i => {
@@ -41,7 +41,7 @@ const formatResourceObject = (fetch1, fetch2) => {
       href: arr[0],
       title: arr[1],
       titleWithComment: arr[2],
-      category: replace(/:/g, "", arr[3])
+      category: replace(/:/g, '', arr[3])
     }),
     list
   )
@@ -50,20 +50,20 @@ const formatResourceObject = (fetch1, fetch2) => {
     merge(fR, {
       comment: replace(
         /[-()]/g,
-        "",
+        '',
         fR.titleWithComment.substring(fR.title.length + 1)
       ),
       _id: `resource_${replace(
         /[-()\s]/g,
-        "-",
+        '-',
         fR.titleWithComment + fR.href + fR.category
       )}`,
       key: `${replace(
         /[-()\s]/g,
-        "-",
+        '-',
         fR.titleWithComment + fR.href + fR.category
       )}`,
-      type: "resource"
+      type: 'resource'
     })
 
   const list3 = map(li, list2)

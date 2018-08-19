@@ -1,44 +1,47 @@
-import { GET_RESOURCES } from "../constants"
-import formatResourceObject from "./formatResourceObject"
+/* global window */
+import { GET_RESOURCES } from '../constants'
+import formatResourceObject from './formatResourceObject'
 
-const scrapeIt = require("scrape-it")
+const scrapeIt = require('scrape-it')
+
 const urlBTC = process.env.REACT_APP_BTC_URL
-const corsIt = "https://cors.io?"
+const corsIt = 'https://cors.io?'
 const fetchHTMLURL = `${corsIt}${urlBTC}`
 
 const scrapeParseObjOne = {
   item: {
-    listItem: "section div div div ul",
+    listItem: 'section div div div ul',
     data: {
       titleWithComment: {
-        listItem: "li"
+        listItem: 'li'
       },
       title: {
-        listItem: "a"
+        listItem: 'a'
       },
       href: {
-        listItem: "li",
+        listItem: 'li',
         data: {
           url: {
-            selector: "a",
-            attr: "href"
+            selector: 'a',
+            attr: 'href'
           }
         }
       }
     }
   }
 }
-const scrapedResourcesTwo = {
+
+const scrapeParseObjTwo = {
   category: {
-    listItem: "section div div div h3"
+    listItem: 'section div div div h3'
   }
 }
 
-const scraper = (dispatch, getState) =>
+const scraper = dispatch =>
   scrapeIt(fetchHTMLURL, scrapeParseObjOne).then(({ data }) => {
     const scrapedResourcesOne = data.item
 
-    scrapeIt(fetchHTMLURL, scrapedResourcesTwo).then(({ data }) => {
+    scrapeIt(fetchHTMLURL, scrapeParseObjTwo).then(({ data }) => {
       const scrapedResourcesTwo = data.category
 
       const combinedScrapedResources = formatResourceObject(
@@ -47,11 +50,11 @@ const scraper = (dispatch, getState) =>
       )
 
       window.localStorage.setItem(
-        "extResources",
+        'extResources',
         JSON.stringify(combinedScrapedResources)
       )
       window.localStorage.setItem(
-        "extResourcesSetTime",
+        'extResourcesSetTime',
         JSON.stringify(Date.now())
       )
 
