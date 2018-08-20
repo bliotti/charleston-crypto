@@ -46,7 +46,7 @@ const scraper = dispatch =>
     scrapeIt(fetchHTMLURL, scrapeParseObjTwo).then(({ data }) => {
       const scrapedResourcesTwo = data.category
       const mappedCategories = formatCategoriesObject(scrapedResourcesTwo)
-      console.log(mappedCategories)
+      // console.log(mappedCategories)
       window.localStorage.setItem(
         'extCategories',
         JSON.stringify(mappedCategories)

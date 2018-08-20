@@ -27,6 +27,12 @@ const formatResourceObject = (fetch1, fetch2) => {
     return i.titleWithComment
   }, fetch1)
 
+  console.log('fetch1', fetch1)
+  console.log('fetch2', fetch2)
+  console.log('title', title)
+  console.log('links', links)
+  console.log('W', W)
+
   const zipp = (a, b, c, d) => {
     var rv = []
     var idx = 0

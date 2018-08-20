@@ -20,6 +20,8 @@ const styles = theme => ({
   }
 })
 
+// TODO links
+
 const li = coin => (
   <Tab
     label={
@@ -44,7 +46,7 @@ class ScrollableTabsButtonAuto extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="stickey" color="default">
+        <AppBar position="sticky" color="default">
           <Tabs
             value={0}
             indicatorColor="primary"
@@ -53,16 +55,11 @@ class ScrollableTabsButtonAuto extends React.Component {
             scrollButtons="off"
           >
             <Tab
-              icon={
-                <IconButton
-                  className={classes.firstButton}
-                  color="inherit"
-                  aria-label="Menu"
-                  onClick={goToSearch(history)}
-                >
-                  <SearchIcon />
-                </IconButton>
-              }
+              icon={<SearchIcon />}
+              className={classes.firstButton}
+              color="inherit"
+              aria-label="Menu"
+              onClick={goToSearch(history)}
             />
             {map(li, exchangeData)}
           </Tabs>

@@ -44,6 +44,7 @@ const ResourcesSearch = props => {
         label="Search"
         type="search"
         value={searchTxt}
+        autoComplete="off"
         onChange={e => onTextFieldChange(e.target.value)}
         margin="normal"
         style={{
