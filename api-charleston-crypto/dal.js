@@ -1,5 +1,5 @@
-const PouchDB = require("pouchdb-core")
-PouchDB.plugin(require("pouchdb-adapter-http"))
+const PouchDB = require('pouchdb-core')
+PouchDB.plugin(require('pouchdb-adapter-http'))
 const {
   map,
   prop,
@@ -11,46 +11,62 @@ const {
   propEq,
   propOr,
   contains
-} = require("ramda")
+} = require('ramda')
 const COUCHDB_SERVER = process.env.COUCHDB_SERVER
 const COUCHDB_DBNAME = process.env.COUCHDB_DBNAME
 const DB_URL = `${COUCHDB_SERVER}${COUCHDB_DBNAME}`
 
-const { getAllDocs } = require("./dal-helper")
-const pkGen = require("./lib/pkGen")
+const { getAllDocs } = require('./dal-helper')
+const pkGen = require('./lib/pkGen')
 
 const db = new PouchDB(DB_URL)
 
 const getCategories = query => {
-  const [key, value] = not(isEmpty(query)) ? split(":", query) : ["", ""]
+  const [key, value] = not(isEmpty(query)) ? split(':', query) : ['', '']
   return getAllDocs(db, {
     include_docs: true,
-    startkey: "category_",
-    endkey: "category_\ufff0"
+    startkey: 'category_',
+    endkey: 'category_\ufff0'
   }).then(
     categories =>
       isEmpty(query)
         ? categories
         : filter(
-            category => contains(value, propOr("", key, category)),
+            category => contains(value, propOr('', key, category)),
             categories
           )
   )
 }
 
 const getResources = query => {
-  const [key, value] = not(isEmpty(query)) ? split(":", query) : ["", ""]
+  const [key, value] = not(isEmpty(query)) ? split(':', query) : ['', '']
   return getAllDocs(db, {
     include_docs: true,
-    startkey: "resource",
-    endkey: "resource_\ufff0"
+    startkey: 'resource',
+    endkey: 'resource_\ufff0'
   }).then(
     resources =>
       isEmpty(query)
         ? resources
         : filter(
-            resource => contains(value, propOr("", key, resource)),
+            resource => contains(value, propOr('', key, resource)),
             resources
+          )
+  )
+}
+const getCompanies = query => {
+  const [key, value] = not(isEmpty(query)) ? split(':', query) : ['', '']
+  return getAllDocs(db, {
+    include_docs: true,
+    startkey: 'company',
+    endkey: 'company_\ufff0'
+  }).then(
+    companies =>
+      isEmpty(query)
+        ? companies
+        : filter(
+            company => contains(value, propOr('', key, company)),
+            companies
           )
   )
 }
@@ -59,4 +75,10 @@ const getCategory = id => db.get(id)
 
 const getResource = id => db.get(id)
 
-module.exports = { getCategory, getCategories, getResources, getResource }
+module.exports = {
+  getCategory,
+  getCategories,
+  getResources,
+  getResource,
+  getCompanies
+}
