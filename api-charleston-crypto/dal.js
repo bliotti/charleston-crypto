@@ -37,6 +37,7 @@ const getCategories = query => {
           )
   )
 }
+const getCategory = id => db.get(id)
 
 const getResources = query => {
   const [key, value] = not(isEmpty(query)) ? split(':', query) : ['', '']
@@ -54,6 +55,8 @@ const getResources = query => {
           )
   )
 }
+const getResource = id => db.get(id)
+
 const getCompanies = query => {
   const [key, value] = not(isEmpty(query)) ? split(':', query) : ['', '']
   return getAllDocs(db, {
@@ -71,14 +74,28 @@ const getCompanies = query => {
   )
 }
 
-const getCategory = id => db.get(id)
+const getCompany = id => db.get(id)
 
-const getResource = id => db.get(id)
+const addCompany = item =>
+  db.put(
+    merge(item, {
+      _id: pkGen('company_', item.name),
+      type: 'company'
+    })
+  )
+
+const changeCompany = doc => db.put(doc)
+
+const deleteCompany = id => db.get(id).then(doc => db.remove(doc))
 
 module.exports = {
   getCategory,
   getCategories,
   getResources,
   getResource,
-  getCompanies
+  getCompanies,
+  getCompany,
+  addCompany,
+  changeCompany,
+  deleteCompany
 }

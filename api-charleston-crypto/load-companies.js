@@ -14,12 +14,18 @@ db.bulkDocs([
     _id: 'company_commit-good',
     type: 'company',
     name: 'Commit Good',
+    description: 'Blockchain good',
+    firstName: 'Clay',
+    lastName: 'Matthews',
     icon: 'C'
   },
   {
     _id: 'company_block-yard',
     type: 'company',
     name: 'Block Yard',
+    description: 'Mining Facility',
+    firstName: 'Brett',
+    lastName: 'Garmen',
     icon: 'B'
   }
 ])
