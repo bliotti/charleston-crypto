@@ -17,7 +17,8 @@ const requiredFields = [
   'description',
   'firstName',
   'lastName',
-  'description'
+  'description',
+  'site'
 ]
 
 module.exports = app => {

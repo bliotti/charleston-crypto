@@ -17,6 +17,7 @@ db.bulkDocs([
     description: 'Blockchain good',
     firstName: 'Clay',
     lastName: 'Matthews',
+    site: 'https://commitgood.com/',
     icon: 'C'
   },
   {
@@ -26,6 +27,7 @@ db.bulkDocs([
     description: 'Mining Facility',
     firstName: 'Brett',
     lastName: 'Garmen',
+    site: 'https://www.garmansouthern.com/',
     icon: 'B'
   }
 ])
