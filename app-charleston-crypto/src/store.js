@@ -1,9 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from "redux"
-import thunk from "redux-thunk"
-import { drawer } from "./reducers/drawer"
-import { categories } from "./reducers/categories"
-import { resources, resourcesSearchText } from "./reducers/resources"
-import { exchangeData } from "./reducers/exchangeData"
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { drawer } from './reducers/drawer'
+import { categories } from './reducers/categories'
+import { companies } from './reducers/companies'
+import { resources, resourcesSearchText } from './reducers/resources'
+import { exchangeData } from './reducers/exchangeData'
 
 const store = createStore(
   combineReducers({
@@ -11,7 +12,8 @@ const store = createStore(
     categories,
     resources,
     resourcesSearchText,
-    exchangeData
+    exchangeData,
+    companies
   }),
   applyMiddleware(thunk)
 )

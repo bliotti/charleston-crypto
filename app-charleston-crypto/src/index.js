@@ -6,7 +6,7 @@ import App from './App'
 import 'typeface-roboto'
 import store from './store'
 import registerServiceWorker from './registerServiceWorker'
-import { setCategories } from './action-creators/categories'
+import { setCompanies } from './action-creators/companies'
 import { fetchResources } from './action-creators/resources'
 
 ReactDOM.render(
@@ -17,5 +17,5 @@ ReactDOM.render(
 )
 
 registerServiceWorker()
-// store.dispatch(setCategories)
+store.dispatch(setCompanies)
 store.dispatch(fetchResources)

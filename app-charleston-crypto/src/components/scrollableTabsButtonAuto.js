@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { getExchangeData } from '../action-creators/exchangeData'
 import { map } from 'ramda'
 import SearchIcon from '@material-ui/icons/Search'
+import { Link } from 'react-router-dom'
 
 import IconButton from '@material-ui/core/IconButton'
 
@@ -23,17 +24,19 @@ const styles = theme => ({
 // TODO links
 
 const li = coin => (
-  <Tab
-    label={
-      coin.symbol +
-      ' ' +
-      coin.current_price.toLocaleString(undefined, {
-        style: 'currency',
-        currency: 'USD'
-      })
-    }
-    key={coin.symbol}
-  />
+  <Link to={`/market/${coin.symbol}usd`}>
+    <Tab
+      label={
+        coin.symbol +
+        ' ' +
+        coin.current_price.toLocaleString(undefined, {
+          style: 'currency',
+          currency: 'USD'
+        })
+      }
+      key={coin.symbol}
+    />
+  </Link>
 )
 
 class ScrollableTabsButtonAuto extends React.Component {
