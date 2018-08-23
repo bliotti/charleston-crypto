@@ -22,7 +22,6 @@ const Market = props => (
         symbol={`${props.match.params.id}`}
         theme={Themes.DARK}
         timezone="America/New York"
-        style="1"
         locale="en"
         height={`${667 - menuHeight}`}
         width="100%" //"100%"

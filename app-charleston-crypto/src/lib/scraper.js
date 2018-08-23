@@ -46,17 +46,24 @@ const scraper = dispatch =>
     scrapeIt(fetchHTMLURL, scrapeParseObjTwo).then(({ data }) => {
       const scrapedResourcesTwo = data.category
       const mappedCategories = formatCategoriesObject(scrapedResourcesTwo)
+
       // console.log(mappedCategories)
+
       window.localStorage.setItem(
         'extCategories',
         JSON.stringify(mappedCategories)
       )
+
       dispatch({ type: SET_CATEGORIES, payload: mappedCategories })
 
       const combinedScrapedResources = formatResourceObject(
         scrapedResourcesOne,
         scrapedResourcesTwo
       )
+
+      //
+      // Set to Local Storage
+      //
 
       window.localStorage.setItem(
         'extResources',
@@ -67,7 +74,6 @@ const scraper = dispatch =>
         JSON.stringify(Date.now())
       )
 
-      // console.log({ combinedScrapedResources })
       dispatch({ type: GET_RESOURCES, payload: combinedScrapedResources })
     })
   })

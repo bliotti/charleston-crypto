@@ -1,17 +1,17 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import MenuAppBar from '../components/menuAppBar'
 import '../../src/App.css'
-import withDrawer from '../components/withDrawer'
 import ScrollableTabsButtonAuto from '../components/scrollableTabsButtonAuto'
 import TitlebarGridList from '../components/titlebarGridList'
 import SimpleBottomNavigation from '../components/SimpleBottomNavigation'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import SearchIcon from '@material-ui/icons/Search'
 import { withStyles } from '@material-ui/core/styles'
+// import MenuAppBar from '../components/menuAppBar'
+// import withDrawer from '../components/withDrawer'
+// import SearchIcon from '@material-ui/icons/Search'
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     width: '100%',
     backgroundColor: 'darkSlateGrey'
@@ -30,7 +30,7 @@ const styles = theme => ({
 })
 
 const Home = props => {
-  const { history, classes, goToSearch } = props
+  const { history } = props
   return (
     <React.Fragment>
       <div
@@ -63,6 +63,7 @@ const Home = props => {
           <Link to="/market"> Market </Link>
           <br />
           <br />
+          <Link to="/companies"> Companies </Link>
           <br />
 
           <iframe
@@ -70,6 +71,7 @@ const Home = props => {
             height="570"
             src="http://meetu.ps/3jdgTF"
             frameBorder="0"
+            title="BTC MEETUP"
           />
 
           <div style={{ paddingTop: 2 }} />
@@ -90,7 +92,7 @@ const Home = props => {
     </React.Fragment>
   )
 }
-const mapStateToProps = state => ({})
+const mapStateToProps = () => ({})
 
 const connector = connect(mapStateToProps)
 

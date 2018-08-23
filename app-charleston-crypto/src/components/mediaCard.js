@@ -19,7 +19,7 @@ const styles = {
   }
 }
 
-const li = (classes, history) => company => (
+const li = classes => company => (
   <Card className={classes.card} key={company._id}>
     <CardMedia
       className={classes.media}
@@ -46,8 +46,8 @@ const li = (classes, history) => company => (
 )
 
 const MediaCard = props => {
-  const { classes, companies, history } = props
-  const styledLi = li(classes, history)
+  const { classes, companies } = props
+  const styledLi = li(classes)
   return <React.Fragment>{map(styledLi, companies)}</React.Fragment>
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { TextField, Grid, Button, withStyles } from '@material-ui/core'
+import { TextField, withStyles } from '@material-ui/core'
 import MenuAppBar from '../../components/menuAppBar'
 import { changeCompany } from '../../action-creators/companies'
 import {
@@ -9,6 +8,7 @@ import {
   EDIT_COMPANY_FORM_LOADED
 } from '../../constants'
 import { find, propEq } from 'ramda'
+// import { Link } from 'react-router-dom'
 
 const styles = theme => ({
   withoutLabel: {
@@ -42,7 +42,7 @@ class CompanyView extends React.Component {
   }
   render() {
     const { firstName, lastName, description, name } = this.props.company
-    const { textField, center, margin, root, withoutLabel } = this.props.classes
+    const { textField, center } = this.props.classes
     const { onChange, onSubmit, history } = this.props
 
     return (
@@ -114,7 +114,7 @@ const mapActionsToProps = dispatch => {
         payload: { [field]: value }
       })
     },
-    onSubmit: history => e => {
+    onSubmit: () => e => {
       e.preventDefault()
       dispatch(changeCompany)
     },

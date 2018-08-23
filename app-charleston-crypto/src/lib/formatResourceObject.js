@@ -1,6 +1,6 @@
 import { merge, replace, unnest, map, append, head } from 'ramda'
 
-const formatCategoriesObject = fetch2 =>
+const formatCategoriesObject = fetchScrapeTwo =>
   map(
     arr => ({
       _id: `category_${replace(/:\s/g, '', arr)}`,
@@ -9,29 +9,25 @@ const formatCategoriesObject = fetch2 =>
       icon: head(arr),
       type: 'category'
     }),
-    fetch2
+    fetchScrapeTwo
   )
 
-const formatResourceObject = (fetch1, fetch2) => {
-  const links = map(i => {
+const formatResourceObject = (fetchScrapOne, fetchScrapeTwo) => {
+  // Resources formated at input as [ [],[],... ]
+
+  const resourceLinks = map(i => {
     return map(x => {
       return x.url
     }, i.href)
-  }, fetch1)
+  }, fetchScrapOne)
 
-  const title = map(i => {
+  const resourceTitle = map(i => {
     return i.title
-  }, fetch1)
+  }, fetchScrapOne)
 
-  const W = map(i => {
+  const resourceTitleWithComment = map(i => {
     return i.titleWithComment
-  }, fetch1)
-
-  console.log('fetch1', fetch1)
-  console.log('fetch2', fetch2)
-  console.log('title', title)
-  console.log('links', links)
-  console.log('W', W)
+  }, fetchScrapOne)
 
   const zipp = (a, b, c, d) => {
     var rv = []
@@ -47,8 +43,19 @@ const formatResourceObject = (fetch1, fetch2) => {
   let result = []
   let x = []
 
-  for (var i = 0; i < links.length; i++) {
-    x = zipp(links[i], title[i], W[i], fetch2[i])
+  console.log('fetchScrapOne', fetchScrapOne)
+  console.log('fetchScrapeTwo', fetchScrapeTwo)
+  console.log('resourceTitle', resourceTitle)
+  console.log('resourceLinks', resourceLinks)
+  console.log('resourceTitleWithComment', resourceTitleWithComment)
+
+  for (var i = 0; i < resourceLinks.length; i++) {
+    x = zipp(
+      resourceLinks[i],
+      resourceTitle[i],
+      resourceTitleWithComment[i],
+      fetchScrapeTwo[i]
+    )
     result = append(x, result)
   }
 
