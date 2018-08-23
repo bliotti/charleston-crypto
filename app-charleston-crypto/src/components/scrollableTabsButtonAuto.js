@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    // width: '100%',
+    width: '100%',
     backgroundColor: theme.palette.background.paper
   }
 })
@@ -25,7 +25,7 @@ const li = coin => (
   <Link
     to={`/market/${coin.symbol}usd`}
     key={coin.symbol}
-    // style={{ textDecoration: 'none' }}
+    style={{ textDecoration: 'none' }}
   >
     <Tab
       label={
