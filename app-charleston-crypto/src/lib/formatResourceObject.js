@@ -43,11 +43,11 @@ const formatResourceObject = (fetchScrapOne, fetchScrapeTwo) => {
   let result = []
   let x = []
 
-  console.log('fetchScrapOne', fetchScrapOne)
-  console.log('fetchScrapeTwo', fetchScrapeTwo)
-  console.log('resourceTitle', resourceTitle)
-  console.log('resourceLinks', resourceLinks)
-  console.log('resourceTitleWithComment', resourceTitleWithComment)
+  // console.log('fetchScrapOne', fetchScrapOne)
+  // console.log('fetchScrapeTwo', fetchScrapeTwo)
+  // console.log('resourceTitle', resourceTitle)
+  // console.log('resourceLinks', resourceLinks)
+  // console.log('resourceTitleWithComment', resourceTitleWithComment)
 
   for (var i = 0; i < resourceLinks.length; i++) {
     x = zipp(

@@ -16,8 +16,6 @@ const Market = props => (
         paddingTop: menuHeight
       }}
     >
-      {console.log({ props })}
-
       <TradingViewWidget
         symbol={`${props.match.params.id}`}
         theme={Themes.DARK}
