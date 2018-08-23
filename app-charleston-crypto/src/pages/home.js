@@ -57,19 +57,22 @@ const Home = props => {
             </Typography>
             <Typography variant="title">& Blockchain Community</Typography>
           </div>
-
+          <br />
           <Link to="/dashboardpage"> Dashboard </Link>
           <br />
           <Link to="/market"> Market </Link>
           <br />
+          <br />
+          <br />
+
           <iframe
             width="225"
             height="570"
             src="http://meetu.ps/3jdgTF"
-            frameborder="0"
+            frameBorder="0"
           />
-          <br />
-          <div style={{ paddingTop: 6 }} />
+
+          <div style={{ paddingTop: 2 }} />
 
           <div
             style={{

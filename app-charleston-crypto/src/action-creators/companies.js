@@ -6,7 +6,7 @@ const url = process.env.REACT_APP_BASE_URL + '/companies'
 export const setCompanies = async (dispatch, getState) => {
   const companies = await fetch(url).then(res => res.json())
 
-  console.log(companies)
+  // console.log('from ac', companies)
   dispatch({ type: GET_COMPANIES, payload: companies })
 }
 

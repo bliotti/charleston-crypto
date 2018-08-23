@@ -24,7 +24,11 @@ const styles = theme => ({
 // TODO links
 
 const li = coin => (
-  <Link to={`/market/${coin.symbol}usd`}>
+  <Link
+    to={`/market/${coin.symbol}usd`}
+    key={coin.symbol}
+    style={{ textDecoration: 'none' }}
+  >
     <Tab
       label={
         coin.symbol +
@@ -34,7 +38,6 @@ const li = coin => (
           currency: 'USD'
         })
       }
-      key={coin.symbol}
     />
   </Link>
 )

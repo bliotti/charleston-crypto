@@ -13,7 +13,7 @@ import { withStyles } from '@material-ui/core/styles'
 const styles = theme => ({
   root: {
     width: '100%',
-    backgroundColor: '#363c4e'
+    backgroundColor: '#131722'
   },
   flex: {
     flex: 1
@@ -37,7 +37,7 @@ const MenuAppBar = props => {
         <Toolbar>
           <React.Fragment>
             {props.backArrow ? (
-              <IconButton onClick={e => props.history.goBack()}>
+              <IconButton onClick={e => history.goBack()}>
                 <ChevronLeft
                   className={classes.firstButton}
                   style={{ fontSize: '30', color: 'white' }}

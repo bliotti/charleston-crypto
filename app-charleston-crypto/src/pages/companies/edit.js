@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 import { TextField, Grid, Button, withStyles } from '@material-ui/core'
 import MenuAppBar from '../../components/menuAppBar'
 import { changeCompany } from '../../action-creators/companies'
-import { EDIT_COMPANY_FORM_UPDATED } from '../../constants'
+import {
+  EDIT_COMPANY_FORM_UPDATED,
+  EDIT_COMPANY_FORM_LOADED
+} from '../../constants'
+import { find, propEq } from 'ramda'
 
 const styles = theme => ({
   withoutLabel: {
@@ -29,11 +33,15 @@ const styles = theme => ({
 })
 
 class CompanyView extends React.Component {
-  // componentDidMount() {
-  //   this.props.getCompanies()
-  // }
+  componentDidMount() {
+    const { companies, match, load } = this.props
+
+    const currentCompany = find(propEq('_id', match.params.id), companies)
+
+    load(currentCompany)
+  }
   render() {
-    const { firstName, lastName, description, name } = this.props.companies
+    const { firstName, lastName, description, name } = this.props.company
     const { textField, center, margin, root, withoutLabel } = this.props.classes
     const { onChange, onSubmit, history } = this.props
 
@@ -41,7 +49,7 @@ class CompanyView extends React.Component {
       <center>
         <form className={center} onSubmit={onSubmit(history)}>
           <React.Fragment>
-            <MenuAppBar title="Company Profile" />
+            <MenuAppBar title="Company Profile" backArrow history={history} />
             <TextField
               style={{
                 marginTop: 80
@@ -56,7 +64,7 @@ class CompanyView extends React.Component {
             />
             <TextField
               style={{
-                marginTop: 80
+                marginTop: '80'
               }}
               id="description"
               label="Description"
@@ -94,7 +102,8 @@ class CompanyView extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    companies: state.companies
+    companies: state.companies,
+    company: state.editCompany
   }
 }
 const mapActionsToProps = dispatch => {
@@ -108,7 +117,9 @@ const mapActionsToProps = dispatch => {
     onSubmit: history => e => {
       e.preventDefault()
       dispatch(changeCompany)
-    }
+    },
+    load: company =>
+      dispatch({ type: EDIT_COMPANY_FORM_LOADED, payload: company })
   }
 }
 

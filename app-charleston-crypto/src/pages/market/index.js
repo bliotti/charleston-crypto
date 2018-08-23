@@ -6,8 +6,18 @@ const menuHeight = 56
 
 const Market = props => (
   <div>
-    <MenuAppBar backArrow />
-    <div style={{ paddingTop: menuHeight }}>
+    <MenuAppBar
+      backArrow
+      history={props.history}
+      // title={props.match.params.id.substring(0, 3)}
+    />
+    <div
+      style={{
+        paddingTop: menuHeight
+      }}
+    >
+      {console.log({ props })}
+
       <TradingViewWidget
         symbol={`${props.match.params.id}`}
         theme={Themes.DARK}
@@ -15,7 +25,7 @@ const Market = props => (
         style="1"
         locale="en"
         height={`${667 - menuHeight}`}
-        width="375"
+        width="100%" //"100%"
         interval="D"
       />
     </div>
