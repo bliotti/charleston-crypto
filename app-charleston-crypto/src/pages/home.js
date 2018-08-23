@@ -1,12 +1,13 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import '../../src/App.css'
 import ScrollableTabsButtonAuto from '../components/scrollableTabsButtonAuto'
 import TitlebarGridList from '../components/titlebarGridList'
 import SimpleBottomNavigation from '../components/SimpleBottomNavigation'
+import MediaCard from '../components/mediaCard'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
+
 // import MenuAppBar from '../components/menuAppBar'
 // import withDrawer from '../components/withDrawer'
 // import SearchIcon from '@material-ui/icons/Search'
@@ -31,6 +32,7 @@ const styles = () => ({
 
 const Home = props => {
   const { history } = props
+
   return (
     <React.Fragment>
       <div
@@ -39,7 +41,6 @@ const Home = props => {
           paddingTop: 0
         }}
       >
-        {/* <MenuAppBar title="" history={history} searchImage /> */}
         <ScrollableTabsButtonAuto history={history} />
 
         <center>
@@ -57,24 +58,6 @@ const Home = props => {
             </Typography>
             <Typography variant="title">& Blockchain Community</Typography>
           </div>
-          <br />
-          <Link to="/dashboardpage"> Dashboard </Link>
-          <br />
-          <Link to="/market"> Market </Link>
-          <br />
-          <br />
-          <Link to="/companies"> Companies </Link>
-          <br />
-
-          <iframe
-            width="225"
-            height="570"
-            src="http://meetu.ps/3jdgTF"
-            frameBorder="0"
-            title="BTC MEETUP"
-          />
-
-          <div style={{ paddingTop: 2 }} />
 
           <div
             style={{
@@ -83,11 +66,35 @@ const Home = props => {
               borderColor: '#9e9e9e'
             }}
           />
+          <div style={{ padding: 20 }} />
+
+          <Link to="/companies" style={{ textDecoration: 'none' }}>
+            <Typography variant="title"> Companies </Typography>
+          </Link>
+          <div style={{ padding: 20 }} />
+          <MediaCard />
+
+          <div style={{ padding: 20 }} />
+
+          <div
+            style={{
+              borderTop: '1px solid',
+              paddingTop: '12px',
+              borderColor: '#9e9e9e'
+            }}
+          />
+          <div style={{ padding: 20 }} />
+          <Link to="/resources" style={{ textDecoration: 'none' }}>
+            <Typography variant="title"> Bitcoin Resources </Typography>
+          </Link>
+
+          <div style={{ padding: 20 }} />
 
           <TitlebarGridList />
         </center>
+        <div style={{ padding: 20 }} />
       </div>
-      <br />
+
       <SimpleBottomNavigation />
     </React.Fragment>
   )
@@ -97,3 +104,11 @@ const mapStateToProps = () => ({})
 const connector = connect(mapStateToProps)
 
 export default connector(withStyles(styles)(Home))
+
+{
+  /* <Link to="/dashboardpage"> Dashboard </Link>
+<br />
+<Link to="/market"> Market </Link>
+<br />
+<br /> */
+}

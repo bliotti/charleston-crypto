@@ -12,10 +12,15 @@ import { map } from 'ramda'
 
 const styles = {
   card: {
-    maxWidth: 345
+    maxWidth: 345,
+    margin: 20
+    // display: 'flex',
+    // flexDirection: 'row',
+    // flexWrap: 'wrap'
   },
   media: {
-    height: 140
+    height: 250,
+    flexBasis: 'auto'
   }
 }
 
@@ -23,7 +28,8 @@ const li = classes => company => (
   <Card className={classes.card} key={company._id}>
     <CardMedia
       className={classes.media}
-      image="/static/images/cards/contemplative-reptile.jpg"
+      height="250"
+      image={`${company.img}`}
       title={company.name}
     />
     <CardContent>

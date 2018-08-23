@@ -82,7 +82,7 @@ module.exports = app => {
     }
 
     const cleanedCompanyDoc = cleanObject(
-      concat(requiredFields, ['_id', '_rev', 'type']),
+      concat(requiredFields, ['_id', '_rev', 'type', 'img']),
       changedCompany
     )
 

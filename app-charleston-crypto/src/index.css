@@ -2,4 +2,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: linear-gradient(
+    to left bottom,
+    #2d0cf5,
+    #c300bb,
+    #f10084,
+    #fd1d5b,
+    #f56a47
+  );
 }

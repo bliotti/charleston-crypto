@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { TextField, withStyles } from '@material-ui/core'
 import MenuAppBar from '../../components/menuAppBar'
-import { changeCompany } from '../../action-creators/companies'
+import { changeCompany, setCompany } from '../../action-creators/companies'
 import {
   EDIT_COMPANY_FORM_UPDATED,
   EDIT_COMPANY_FORM_LOADED
@@ -36,66 +36,74 @@ class CompanyView extends React.Component {
   componentDidMount() {
     const { companies, match, load } = this.props
 
-    const currentCompany = find(propEq('_id', match.params.id), companies)
-
-    load(currentCompany)
+    load(match.params.id)
   }
   render() {
     const { firstName, lastName, description, name } = this.props.company
     const { textField, center } = this.props.classes
-    const { onChange, onSubmit, history } = this.props
+    const { onChange, onSubmit, history, match } = this.props
 
     return (
-      <center>
-        <form className={center} onSubmit={onSubmit(history)}>
-          <React.Fragment>
-            <MenuAppBar title="Company Profile" backArrow history={history} />
-            <TextField
-              style={{
-                marginTop: 80
-              }}
-              id="company_name"
-              label="Company Name"
-              value={name}
-              onChange={e => onChange('name', e.target.value)}
-              className={textField}
-              autoComplete="off"
-              required
-            />
-            <TextField
-              style={{
-                marginTop: '80'
-              }}
-              id="description"
-              label="Description"
-              value={description}
-              onChange={e => onChange('description', e.target.value)}
-              className={textField}
-              autoComplete="off"
-              required
-            />
+      <div
+        className="body"
+        style={{
+          paddingTop: 0,
+          backgroundRepeat: 'noRepeat',
+          height: '100%',
+          width: '100%'
+        }}
+      >
+        <center>
+          <form className={center} onSubmit={onSubmit(history)}>
+            <React.Fragment>
+              <MenuAppBar title="Company Profile" backArrow history={history} />
+              <TextField
+                style={{
+                  marginTop: 80
+                }}
+                id="company_name"
+                label="Company Name"
+                value={name}
+                onChange={e => onChange('name', e.target.value)}
+                className={textField}
+                autoComplete="off"
+                required
+              />
+              <TextField
+                style={{
+                  marginTop: '80'
+                }}
+                id="description"
+                label="Description"
+                value={description}
+                onChange={e => onChange('description', e.target.value)}
+                className={textField}
+                autoComplete="off"
+                required
+              />
 
-            <TextField
-              id="firstName"
-              label="First Name"
-              value={firstName}
-              onChange={e => onChange('firstName', e.target.value)}
-              className={textField}
-              required
-              autoComplete="off"
-            />
-            <TextField
-              id="lastName"
-              label="Last Name"
-              value={lastName}
-              onChange={e => onChange('lastName', e.target.value)}
-              className={textField}
-              required
-              autoComplete="off"
-            />
-          </React.Fragment>
-        </form>
-      </center>
+              <TextField
+                id="firstName"
+                label="First Name"
+                value={firstName}
+                onChange={e => onChange('firstName', e.target.value)}
+                className={textField}
+                required
+                autoComplete="off"
+              />
+              <TextField
+                id="lastName"
+                label="Last Name"
+                value={lastName}
+                onChange={e => onChange('lastName', e.target.value)}
+                className={textField}
+                required
+                autoComplete="off"
+              />
+            </React.Fragment>
+          </form>
+        </center>
+      </div>
     )
   }
 }
@@ -114,12 +122,11 @@ const mapActionsToProps = dispatch => {
         payload: { [field]: value }
       })
     },
-    onSubmit: () => e => {
+    onSubmit: history => e => {
       e.preventDefault()
-      dispatch(changeCompany)
+      dispatch(changeCompany(history))
     },
-    load: company =>
-      dispatch({ type: EDIT_COMPANY_FORM_LOADED, payload: company })
+    load: id => dispatch(setCompany(id))
   }
 }
 
