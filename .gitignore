@@ -3,6 +3,7 @@ node_modules
 dist
 .DS_Store
 .env
+user-stories.md
 
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 

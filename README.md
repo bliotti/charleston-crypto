@@ -1,5 +1,5 @@
 # charleston-crypto
-Your guide to Charleston's cryptocurrency and blockchain technology
 
+Your guide to Charleston's cryptocurrency & blockchain technology.
 
-https://charlestoncrypto.com
+[Charleston Crypto](https://charlestoncrypto.com)
