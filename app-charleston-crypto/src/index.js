@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import App from './App'
 import 'typeface-roboto'
 import store from './store'
-import registerServiceWorker from './registerServiceWorker'
+// import registerServiceWorker from './registerServiceWorker'
 import { setCompanies } from './action-creators/companies'
 import { fetchResources } from './action-creators/resources'
 
@@ -16,6 +16,6 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-registerServiceWorker()
+// registerServiceWorker()
 store.dispatch(setCompanies)
 store.dispatch(fetchResources)
