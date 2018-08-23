@@ -12,9 +12,9 @@ const scrapeElapsedTime = 1000 * 60 * 60
 
 export const fetchResources = (dispatch, getState) => {
   isNil(window.localStorage.getItem('extResources')) ||
-  isNil(window.localStorage.getItem('extCategories')) ||
-  JSON.parse(window.localStorage.getItem('extResourcesSetTime')) <
-    Date.now() - scrapeElapsedTime
+    isNil(window.localStorage.getItem('extCategories')) ||
+    JSON.parse(window.localStorage.getItem('extResourcesSetTime'))
+  Date.now() - scrapeElapsedTime
     ? (console.log('Scraped, Parsed, and Set Resources to Local Storage'),
       scraper(dispatch, getState))
     : (console.log('Retrieved Resources from Local Storage'),

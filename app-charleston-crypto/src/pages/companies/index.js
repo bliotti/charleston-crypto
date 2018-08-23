@@ -7,9 +7,23 @@ import MediaCard from '../../components/mediaCard'
 const CompaniesList = props => {
   const { history } = props
   return (
-    <div style={{ paddingTop: 56 }}>
+    <div
+      style={{
+        paddingTop: 56,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+      }}
+    >
       <MenuAppBar title="Companies" history={history} backArrow searchImage />
-      <MediaCard props />
+      <MediaCard
+        props
+        style={{
+          padding: 56,
+          margin: 100
+        }}
+      />
 
       {/* <CategoryListItems /> */}
       {/* <TitlebarGridList /> */}

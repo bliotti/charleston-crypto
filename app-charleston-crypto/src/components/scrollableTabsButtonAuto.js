@@ -42,6 +42,7 @@ class ScrollableTabsButtonAuto extends React.Component {
         onClick={e => history.push(`/market/${coin.symbol}usd`)}
         key={coin.symbol}
         style={{ textDecoration: 'none' }}
+        exchangeData={exchangeData}
       />
     )
 

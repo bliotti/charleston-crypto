@@ -2,9 +2,10 @@ import {
   GET_COMPANIES,
   EDIT_COMPANY_FORM_LOADED,
   EDIT_COMPANY_FORM_UPDATED,
-  EDIT_COMPANY_FORM_SAVE_SUCCEEDED
+  EDIT_COMPANY_FORM_SAVE_SUCCEEDED,
+  GET_COMPANY
 } from '../constants'
-import { merge } from 'ramda'
+import { merge, mergeDeepRight } from 'ramda'
 
 const initialCompany = {
   _id: '',
@@ -26,10 +27,19 @@ export const companies = (state = [], action) => {
   }
 }
 
+export const company = (state = {}, action) => {
+  switch (action.type) {
+    case GET_COMPANY:
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export const editCompany = (state = initialCompany, action) => {
   switch (action.type) {
     case EDIT_COMPANY_FORM_LOADED:
-      return action.payload
+      return merge(state, action.payload)
     case EDIT_COMPANY_FORM_SAVE_SUCCEEDED:
       return initialCompany
     case EDIT_COMPANY_FORM_UPDATED:
