@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TextField, withStyles } from '@material-ui/core'
+import { TextField, withStyles, Button } from '@material-ui/core'
+import SaveIcon from '@material-ui/icons/Save'
 import MenuAppBar from '../../components/menuAppBar'
 import { changeCompany, setCompany } from '../../action-creators/companies'
 import {
@@ -8,6 +9,7 @@ import {
   EDIT_COMPANY_FORM_LOADED
 } from '../../constants'
 import { find, propEq } from 'ramda'
+
 // import { Link } from 'react-router-dom'
 
 const styles = theme => ({
@@ -54,19 +56,22 @@ class CompanyView extends React.Component {
         }}
       >
         <center>
-          <form className={center} onSubmit={onSubmit(history)}>
+          <form
+            className={center}
+            autoComplete="off"
+            onSubmit={onSubmit(history)}
+          >
             <React.Fragment>
               <MenuAppBar title="Company Profile" backArrow history={history} />
               <TextField
                 style={{
-                  marginTop: 80
+                  marginTop: 120
                 }}
                 id="company_name"
                 label="Company Name"
                 value={name}
                 onChange={e => onChange('name', e.target.value)}
                 className={textField}
-                autoComplete="off"
                 required
               />
               <TextField
@@ -78,7 +83,6 @@ class CompanyView extends React.Component {
                 value={description}
                 onChange={e => onChange('description', e.target.value)}
                 className={textField}
-                autoComplete="off"
                 required
               />
 
@@ -89,7 +93,6 @@ class CompanyView extends React.Component {
                 onChange={e => onChange('firstName', e.target.value)}
                 className={textField}
                 required
-                autoComplete="off"
               />
               <TextField
                 id="lastName"
@@ -98,8 +101,17 @@ class CompanyView extends React.Component {
                 onChange={e => onChange('lastName', e.target.value)}
                 className={textField}
                 required
-                autoComplete="off"
               />
+              <Button
+                color="primary"
+                type="submit"
+                variant="raised"
+                aria-label="submit"
+                // className="fab-button"
+                style={{ marginTop: 45 }}
+              >
+                SUBMIT
+              </Button>
             </React.Fragment>
           </form>
         </center>

@@ -33,8 +33,13 @@ const li = tile => {
       {/* <img src={tile.img} alt={tile.name} /> */}
       {/* <Icon style={{ color: "grey" }}>{tile.icon}</Icon> */}
       <GridListTileBar
-        subtitle={tile.name}
-        style={{ backgroundColor: 'black' }}
+        title={tile.name}
+        style={{
+          backgroundColor: 'transparent',
+          borderTop: '1px solid',
+          borderBottom: '1px solid',
+          borderColor: '#9e9e9e'
+        }}
       />
     </GridListTile>
   )

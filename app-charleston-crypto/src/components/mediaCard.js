@@ -13,10 +13,8 @@ import { map } from 'ramda'
 const styles = {
   card: {
     maxWidth: 345,
-    margin: 20
-    // display: 'flex',
-    // flexDirection: 'row',
-    // flexWrap: 'wrap'
+    margin: 20,
+    borderRadius: 20
   },
   media: {
     height: 250,
@@ -26,27 +24,41 @@ const styles = {
 
 const li = classes => company => (
   <Card className={classes.card} key={company._id}>
-    <CardMedia
-      className={classes.media}
-      height="250"
-      image={`${company.img}`}
-      title={company.name}
-    />
+    <a href={company.site}>
+      <CardMedia
+        className={classes.media}
+        height="250"
+        image={`${company.img}`}
+        title={company.name}
+      />
+    </a>
+
     <CardContent>
       <Typography gutterBottom variant="headline" component="h2">
         {company.name}
       </Typography>
       <Typography component="p">{company.description}</Typography>
     </CardContent>
-    <CardActions>
-      <Button size="small" color="primary">
-        <a href={company.site}>Site</a>
+    <CardActions
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly'
+      }}
+    >
+      <Button variant="raised" size="small" color="primary" href={company.site}>
+        Contact
       </Button>
-      <Link to={`/companies/${company._id}`}>
-        <Button size="small" color="primary">
-          Edit
-        </Button>
-      </Link>
+      <Button
+        size="small"
+        variant="contained"
+        color="primary"
+        component={Link}
+        to={`/companies/${company._id}`}
+      >
+        Edit
+      </Button>
     </CardActions>
   </Card>
 )
