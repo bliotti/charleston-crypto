@@ -3,14 +3,10 @@ import { connect } from 'react-redux'
 import { TextField, withStyles, Button } from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 import MenuAppBar from '../../components/menuAppBar'
-import {
-  changeCompany,
-  setCompany,
-  deleteCompany
-} from '../../action-creators/companies'
+import { setCompany, createNewCompany } from '../../action-creators/companies'
 import {
   EDIT_COMPANY_FORM_UPDATED,
-  EDIT_COMPANY_FORM_LOADED
+  NEW_COMPANY_FORM_UPDATED
 } from '../../constants'
 import { find, propEq } from 'ramda'
 
@@ -38,16 +34,16 @@ const styles = theme => ({
   }
 })
 
-class CompanyView extends React.Component {
+class CompanyNew extends React.Component {
   componentDidMount() {
     const { companies, match, load } = this.props
 
-    load(match.params.id)
+    // load(match.params.id)
   }
   render() {
-    const { firstName, lastName, description, name, _id } = this.props.company
+    const { firstName, lastName, description, name } = this.props.company
     const { textField, center } = this.props.classes
-    const { onChange, onSubmit, history, match, onDelete } = this.props
+    const { onChange, saveEvent, history, match } = this.props
 
     return (
       <div
@@ -63,7 +59,7 @@ class CompanyView extends React.Component {
           <form
             className={center}
             autoComplete="off"
-            onSubmit={onSubmit(history)}
+            onSubmit={saveEvent(history)}
           >
             <React.Fragment>
               <MenuAppBar title="Company Profile" backArrow history={history} />
@@ -96,6 +92,7 @@ class CompanyView extends React.Component {
                 value={firstName}
                 onChange={e => onChange('firstName', e.target.value)}
                 className={textField}
+                autoComplete="off"
                 required
               />
               <TextField
@@ -104,6 +101,7 @@ class CompanyView extends React.Component {
                 value={lastName}
                 onChange={e => onChange('lastName', e.target.value)}
                 className={textField}
+                autoComplete="off"
                 required
               />
               <Button
@@ -116,17 +114,6 @@ class CompanyView extends React.Component {
               >
                 SUBMIT
               </Button>
-              <Button
-                color="primary"
-                type="button"
-                variant="raised"
-                aria-label="delete"
-                onClick={e => onDelete(_id, history)}
-                // className="fab-button"
-                style={{ marginTop: 45 }}
-              >
-                DELETE
-              </Button>
             </React.Fragment>
           </form>
         </center>
@@ -138,25 +125,22 @@ class CompanyView extends React.Component {
 const mapStateToProps = state => {
   return {
     companies: state.companies,
-    company: state.editCompany
+    company: state.newCompany
   }
 }
 const mapActionsToProps = dispatch => {
   return {
     onChange: (field, value) => {
       dispatch({
-        type: EDIT_COMPANY_FORM_UPDATED,
+        type: NEW_COMPANY_FORM_UPDATED,
         payload: { [field]: value }
       })
     },
-    onSubmit: history => e => {
+    saveEvent: history => e => {
       e.preventDefault()
-      dispatch(changeCompany(history))
+      dispatch(createNewCompany(history))
     },
-    load: id => dispatch(setCompany(id)),
-    onDelete: (id, history) => {
-      dispatch(deleteCompany(id, history))
-    }
+    load: id => dispatch(setCompany(id))
   }
 }
 
@@ -164,4 +148,4 @@ const connector = connect(
   mapStateToProps,
   mapActionsToProps
 )
-export default connector(withStyles(styles)(CompanyView))
+export default connector(withStyles(styles)(CompanyNew))

@@ -2,7 +2,6 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import ScrollableTabsButtonAuto from '../components/scrollableTabsButtonAuto'
 import TitlebarGridList from '../components/titlebarGridList'
-import SimpleBottomNavigation from '../components/SimpleBottomNavigation'
 import MediaCard from '../components/mediaCard'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -71,8 +70,15 @@ const Home = props => {
           <Link to="/companies" style={{ textDecoration: 'none' }}>
             <Typography variant="title"> Companies </Typography>
           </Link>
+
           <div style={{ padding: 20 }} />
+
           <MediaCard />
+
+          <div style={{ padding: 20 }} />
+          <Link to="/companies/new" style={{ textDecoration: 'none' }}>
+            <Typography variant="body1"> Add A New Company </Typography>
+          </Link>
 
           <div style={{ padding: 20 }} />
 
@@ -83,7 +89,9 @@ const Home = props => {
               borderColor: '#9e9e9e'
             }}
           />
+
           <div style={{ padding: 20 }} />
+
           <Link to="/resources" style={{ textDecoration: 'none' }}>
             <Typography variant="title"> Bitcoin Resources </Typography>
           </Link>
@@ -95,7 +103,7 @@ const Home = props => {
         <div style={{ padding: 20 }} />
       </div>
 
-      <SimpleBottomNavigation />
+      {/* <SimpleBottomNavigation history={history} /> */}
     </React.Fragment>
   )
 }

@@ -11,9 +11,10 @@ import { Link } from 'react-router-dom'
 //search page
 
 const ResourceListItem = resource => (
-  <Link
-    to={`/resources/${resource._id}`}
+  <a
+    href={`${resource.href}`}
     className="router-link"
+    target="_"
     key={resource.key}
   >
     <ListItem button>
@@ -26,7 +27,7 @@ const ResourceListItem = resource => (
       />
     </ListItem>
     <Divider />
-  </Link>
+  </a>
 )
 
 export default ResourceListItem

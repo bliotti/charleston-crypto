@@ -7,8 +7,12 @@ import {
 const scrapeIt = require('scrape-it')
 
 const urlBTC = process.env.REACT_APP_BTC_URL
-const corsIt = 'https://cors.io?'
+const corsIt = process.env.REACT_APP_CORS_URL
 const fetchHTMLURL = `${corsIt}${urlBTC}`
+
+/////////////////////////////////////////
+//// Scrape Pattern One for resources.///
+/////////////////////////////////////////
 
 const scrapeParseObjOne = {
   item: {
@@ -32,6 +36,10 @@ const scrapeParseObjOne = {
     }
   }
 }
+
+/////////////////////////////////////////////
+//// Scrape Pattern Two for Category Titles//
+/////////////////////////////////////////////
 
 const scrapeParseObjTwo = {
   category: {

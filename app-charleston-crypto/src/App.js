@@ -6,6 +6,7 @@ import Categories from './pages/categories/index'
 import Resources from './pages/resources/index'
 import Companies from './pages/companies'
 import CompanyView from './pages/companies/edit'
+import CompanyNew from './pages/companies/new'
 import ResourcesSearch from './pages/resources/search'
 import Market from './pages/market/index'
 import DashBoardPage from './pages/dash/index'
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path="/resources/search" component={ResourcesSearch} />
           <Route exact path="/resources" component={Resources} />
           <Route exact path="/companies" component={Companies} />
+          <Route exact path="/companies/new" component={CompanyNew} />
           <Route exact path="/companies/:id" component={CompanyView} />
           <Route exact path="/market/:id" component={Market} />
           <Route exact path="/dashboardpage" component={DashBoardPage} />

@@ -2,14 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  /* background-image: linear-gradient(
-    to left bottom,
+  background-image: linear-gradient(
+    180deg,
     #2d0cf5,
     #c300bb,
     #f10084,
     #fd1d5b,
     #f56a47
-  ); */
+  );
 
   /* background: #667db6; /* fallback for old browsers */
   /*background: -webkit-linear-gradient(
@@ -25,18 +25,19 @@ body {
     #0082c8,
     #0082c8,
     #667db6
-  );  */
+  ); 
 
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: #396afc; /* fallback for old browsers */
+  /* background: #396afc;
   background: -webkit-linear-gradient(
     to left,
     #2948ff,
     #396afc
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  ); 
   background: linear-gradient(
     to left,
     #2948ff,
     #396afc
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { drawer } from './reducers/drawer'
 import { categories } from './reducers/categories'
-import { companies, editCompany } from './reducers/companies'
+import { companies, editCompany, newCompany } from './reducers/companies'
 import { resources, resourcesSearchText } from './reducers/resources'
 import { exchangeData } from './reducers/exchangeData'
 
@@ -14,7 +14,8 @@ const store = createStore(
     resourcesSearchText,
     exchangeData,
     companies,
-    editCompany
+    editCompany,
+    newCompany
   }),
   applyMiddleware(thunk)
 )
