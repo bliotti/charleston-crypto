@@ -6,7 +6,7 @@ import MediaCard from '../components/mediaCard'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
-
+import withDrawer from '../components/withDrawer'
 // import MenuAppBar from '../components/menuAppBar'
 // import withDrawer from '../components/withDrawer'
 // import SearchIcon from '@material-ui/icons/Search'
@@ -76,7 +76,10 @@ const Home = props => {
           <MediaCard />
 
           <div style={{ padding: 20 }} />
-          <Link to="/companies/new" style={{ textDecoration: 'none' }}>
+          <Link
+            to="/companies/new"
+            style={{ textDecoration: 'text-decoration-line' }}
+          >
             <Typography variant="body1"> Add A New Company </Typography>
           </Link>
 
@@ -111,7 +114,7 @@ const mapStateToProps = () => ({})
 
 const connector = connect(mapStateToProps)
 
-export default connector(withStyles(styles)(Home))
+export default withDrawer(connector(withStyles(styles)(Home)))
 
 {
   /* <Link to="/dashboardpage"> Dashboard </Link>

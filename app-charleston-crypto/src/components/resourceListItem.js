@@ -18,9 +18,9 @@ const ResourceListItem = resource => (
     key={resource.key}
   >
     <ListItem button>
-      <ListItemIcon>
+      {/* <ListItemIcon>
         <Avatar>{head(resource.category)}</Avatar>
-      </ListItemIcon>
+      </ListItemIcon> */}
       <ListItemText
         primary={resource.titleWithComment}
         secondary={resource.category}

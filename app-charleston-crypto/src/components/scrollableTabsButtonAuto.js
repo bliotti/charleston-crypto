@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { getExchangeData } from '../action-creators/exchangeData'
 import { map } from 'ramda'
 import SearchIcon from '@material-ui/icons/Search'
+import MenuIcon from '@material-ui/icons/Menu'
+import { DRAWER_TOGGLED } from '../constants'
 // import { Link } from 'react-router-dom'
 // import Typography from '@material-ui/core/Typography'
 // import IconButton from '@material-ui/core/IconButton'
@@ -27,7 +29,13 @@ class ScrollableTabsButtonAuto extends React.Component {
   }
 
   render() {
-    const { classes, goToSearch, history, exchangeData } = this.props
+    const {
+      classes,
+      goToSearch,
+      history,
+      exchangeData,
+      toggleDrawer
+    } = this.props
 
     const li = coin => (
       <Tab
@@ -56,12 +64,20 @@ class ScrollableTabsButtonAuto extends React.Component {
             scrollButtons="off"
           >
             <Tab
-              icon={<SearchIcon />}
+              icon={<MenuIcon />}
               className={classes.firstButton}
               color="inherit"
               aria-label="Menu"
+              onClick={toggleDrawer}
+            />
+            <Tab
+              icon={<SearchIcon />}
+              className={classes.firstButton}
+              color="inherit"
+              aria-label="Search"
               onClick={goToSearch(history)}
             />
+
             {map(li, exchangeData)}
           </Tabs>
         </AppBar>
@@ -78,6 +94,7 @@ const mapStateToProps = state => {
 
 const mapActionsToProps = dispatch => {
   return {
+    toggleDrawer: () => dispatch({ type: DRAWER_TOGGLED }),
     getExchangeData: () => dispatch(getExchangeData),
     goToSearch: history => e => history.push('/resources/search')
   }
