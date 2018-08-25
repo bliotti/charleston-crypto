@@ -35,10 +35,10 @@ const li = tile => {
       <GridListTileBar
         title={tile.name}
         style={{
-          backgroundColor: 'transparent',
-          borderTop: '1px solid',
-          borderBottom: '1px solid',
-          borderColor: '#9e9e9e'
+          backgroundColor: 'black',
+
+          borderColor: '#9e9e9e',
+          borderRadius: 10
         }}
       />
     </GridListTile>

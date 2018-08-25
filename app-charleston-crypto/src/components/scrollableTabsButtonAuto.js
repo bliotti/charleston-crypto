@@ -63,13 +63,13 @@ class ScrollableTabsButtonAuto extends React.Component {
             scrollable
             scrollButtons="off"
           >
-            <Tab
+            {/* <Tab
               icon={<MenuIcon />}
               className={classes.firstButton}
               color="inherit"
               aria-label="Menu"
               onClick={toggleDrawer}
-            />
+            /> */}
             <Tab
               icon={<SearchIcon />}
               className={classes.firstButton}

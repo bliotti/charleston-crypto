@@ -76,11 +76,10 @@ const Home = props => {
           <MediaCard />
 
           <div style={{ padding: 20 }} />
-          <Link
-            to="/companies/new"
-            style={{ textDecoration: 'text-decoration-line' }}
-          >
-            <Typography variant="body1"> Add A New Company </Typography>
+          <Link to="/companies/new" style={{ textDecoration: 'none' }}>
+            <Typography style={{ textDecoration: 'none' }} variant="title">
+              Add A New Company
+            </Typography>
           </Link>
 
           <div style={{ padding: 20 }} />
@@ -95,13 +94,13 @@ const Home = props => {
 
           <div style={{ padding: 20 }} />
 
-          <Link to="/resources" style={{ textDecoration: 'none' }}>
+          <Link to="/resources/search" style={{ textDecoration: 'none' }}>
             <Typography variant="title"> Bitcoin Resources </Typography>
           </Link>
 
           <div style={{ padding: 20 }} />
 
-          <TitlebarGridList />
+          {/* <TitlebarGridList /> */}
         </center>
         <div style={{ padding: 20 }} />
       </div>

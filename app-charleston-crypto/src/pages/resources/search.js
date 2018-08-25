@@ -42,6 +42,7 @@ const ResourcesSearch = props => {
       <TextField
         id="search"
         label="Search"
+        defaultValue=""
         type="search"
         value={searchTxt}
         autoComplete="off"
