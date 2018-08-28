@@ -51,12 +51,16 @@ const Home = props => {
           />
 
           <div style={{ paddingTop: 0, paddingBottom: 80 }}>
-            <Typography variant="display2">Charleston Crypto</Typography>
+            <Typography color="primary" variant="display2">
+              Charleston Crypto
+            </Typography>
             <br />
-            <Typography variant="title">
+            <Typography color="primary" variant="title">
               Your Guide to Charleston's CryptoCurrency
             </Typography>
-            <Typography variant="title">& Blockchain Community</Typography>
+            <Typography color="primary" variant="title">
+              & Blockchain Community
+            </Typography>
           </div>
 
           <div
@@ -69,7 +73,9 @@ const Home = props => {
           <div style={{ padding: 20 }} />
 
           <Link to="/companies" style={{ textDecoration: 'none' }}>
-            <Typography variant="title">Local Companies</Typography>
+            <Typography color="primary" variant="title">
+              Local Companies
+            </Typography>
           </Link>
 
           <div style={{ padding: 20 }} />
@@ -78,7 +84,11 @@ const Home = props => {
 
           <div style={{ padding: 20 }} />
           <Link to="/companies/new" style={{ textDecoration: 'none' }}>
-            <Typography style={{ textDecoration: 'none' }} variant="body1">
+            <Typography
+              color="primary"
+              style={{ textDecoration: 'none' }}
+              variant="body1"
+            >
               Add A New Company
             </Typography>
           </Link>
@@ -96,7 +106,9 @@ const Home = props => {
           <div style={{ padding: 20 }} />
 
           <Link to="/resources/search" style={{ textDecoration: 'none' }}>
-            <Typography variant="title"> Bitcoin Resources </Typography>
+            <Typography color="primary" variant="title">
+              Bitcoin Resources
+            </Typography>
           </Link>
 
           <div style={{ padding: 20 }} />

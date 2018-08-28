@@ -19,11 +19,13 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    background: 'black'
   },
   textField: {
     width: '70%',
-    margin: 5
+    margin: 5,
+    color: 'primary'
   },
   margin: {
     margin: theme.spacing.unit
@@ -33,6 +35,9 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
+  },
+  input: {
+    color: 'white'
   }
 })
 
@@ -58,7 +63,8 @@ class CompanyNew extends React.Component {
           paddingTop: 0,
           backgroundRepeat: 'noRepeat',
           height: '100%',
-          width: '100%'
+          width: '100%',
+          color: 'primary'
         }}
       >
         <center>
@@ -70,13 +76,15 @@ class CompanyNew extends React.Component {
           >
             <TextField
               style={{
-                marginTop: 120
+                marginTop: 120,
+                color: 'black'
               }}
               id="company_name"
               label="Company Name"
               value={name}
               onChange={e => onChange('name', e.target.value)}
               className={textField}
+              InputProps={{}}
               required
             />
             <TextField

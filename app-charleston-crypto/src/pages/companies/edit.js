@@ -25,7 +25,8 @@ const styles = theme => ({
     flexWrap: 'wrap'
   },
   textField: {
-    width: '75%'
+    width: '75%',
+    color: 'primary'
   },
   margin: {
     margin: theme.spacing.unit

@@ -36,11 +36,13 @@ class SimpleBottomNavigation extends React.Component {
           onClick={e => history.push('/companies')}
           label="Companies"
           icon={<WorkIcon />}
+          color="primary"
         />
         <BottomNavigationAction
           onClick={e => history.push('/market/btcusd')}
           label="TradeView"
           icon={<BarChartIcon />}
+          color="primary"
         />
         {/* <BottomNavigationAction label="Get Involved" icon={<BarChartIcon />} /> */}
       </BottomNavigation>
