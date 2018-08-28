@@ -1,29 +1,29 @@
 import {
-  GET_COMPANIES,
+  SET_COMPANIES,
   EDIT_COMPANY_FORM_LOADED,
   EDIT_COMPANY_FORM_UPDATED,
   EDIT_COMPANY_FORM_SAVE_SUCCEEDED,
-  NEW_COMPANY_CLEARED,
   NEW_COMPANY_SAVE_SUCCEEDED,
   NEW_COMPANY_FORM_UPDATED,
-  COMPANY_DELETE_SUCCEECED
-} from '../constants'
-import { merge } from 'ramda'
+  COMPANY_DELETE_SUCCEECED,
+  NEW_COMPANY_FORM_CLEARED
+} from "../constants"
+import { merge } from "ramda"
 
 const initialCompany = {
-  _id: '',
-  type: '',
-  name: '',
-  description: '',
-  firstName: '',
-  lastName: '',
-  site: '',
-  icon: ''
+  _id: "",
+  type: "",
+  name: "",
+  description: "",
+  firstName: "",
+  lastName: "",
+  site: "",
+  icon: ""
 }
 
 export const companies = (state = [], action) => {
   switch (action.type) {
-    case GET_COMPANIES:
+    case SET_COMPANIES:
       return action.payload
     default:
       return state
@@ -63,7 +63,7 @@ export const newCompany = (state = initialCompany, action) => {
     //   })
     case NEW_COMPANY_SAVE_SUCCEEDED:
       return initialCompany
-    case NEW_COMPANY_CLEARED:
+    case NEW_COMPANY_FORM_CLEARED:
       return initialCompany
     default:
       return state

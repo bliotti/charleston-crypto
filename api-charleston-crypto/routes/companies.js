@@ -1,29 +1,29 @@
-const NodeHTTPError = require('node-http-error')
-const bodyParser = require('body-parser')
-const { propOr, isEmpty, not, concat, pathOr } = require('ramda')
+const NodeHTTPError = require("node-http-error")
+const bodyParser = require("body-parser")
+const { propOr, isEmpty, not, concat, pathOr } = require("ramda")
 const {
   getCompanies,
   getCompany,
   addCompany,
   changeCompany,
   deleteCompany
-} = require('../dal')
-const checkRequiredFields = require('../lib/checkRequiredFields')
-const missingFieldsMessage = require('../lib/missingFieldsMessage')
-const cleanObject = require('../lib/cleanObject')
+} = require("../dal")
+const checkRequiredFields = require("../lib/checkRequiredFields")
+const missingFieldsMessage = require("../lib/missingFieldsMessage")
+const cleanObject = require("../lib/cleanObject")
 
 const requiredFields = [
-  'name',
-  'description',
-  'firstName',
-  'lastName',
-  'description',
-  'site'
+  "name",
+  "description",
+  "firstName",
+  "lastName",
+  "description",
+  "site"
 ]
 
 module.exports = app => {
-  app.get('/companies', (req, res, next) => {
-    const query = pathOr('', ['query', 'filter'], req)
+  app.get("/companies", (req, res, next) => {
+    const query = pathOr("", ["query", "filter"], req)
     getCompanies(query)
       .then(companies => res.send(companies))
       .catch(err => {
@@ -31,25 +31,27 @@ module.exports = app => {
       })
   })
 
-  app.get('/company/:id', (req, res, next) => {
-    const companyID = pathOr('', ['params', 'id'], req)
+  app.get("/company/:id", (req, res, next) => {
+    const companyID = pathOr("", ["params", "id"], req)
 
     getCompany(companyID)
       .then(company => res.status(200).send(company))
       .catch(err => next(new NodeHTTPError(err.status, err.message, err)))
   })
 
-  app.post('/companies', bodyParser.json(), (req, res, next) => {
-    const newCompany = propOr({}, 'body', req)
+  app.post("/companies", bodyParser.json(), (req, res, next) => {
+    const newCompany = propOr({}, "body", req)
 
     if (isEmpty(newCompany)) {
       res
         .status(400)
-        .send('Please provide a valid JSON document in the request body.')
+        .send("Please provide a valid JSON document in the request body.")
       return
     }
 
     const missingFields = checkRequiredFields(requiredFields, newCompany)
+
+    console.log("postMis", missingFields)
 
     if (not(isEmpty(missingFields))) {
       res.status(400).send(missingFieldsMessage(missingFields))
@@ -63,18 +65,20 @@ module.exports = app => {
       .catch(err => next(new NodeHTTPError(err.status, err.message, err)))
   })
 
-  app.put('/companies', bodyParser.json(), (req, res, next) => {
-    const changedCompany = propOr({}, 'body', req)
+  app.put("/companies", bodyParser.json(), (req, res, next) => {
+    const changedCompany = propOr({}, "body", req)
 
     if (isEmpty(changedCompany)) {
-      res.status(400).send('Please provide a valid JSON document')
+      res.status(400).send("Please provide a valid JSON document")
       return
     }
 
     const missingFields = checkRequiredFields(
-      concat(requiredFields, ['_id', '_rev', 'type']),
+      concat(requiredFields, ["_id", "_rev", "type"]),
       changedCompany
     )
+
+    console.log("putMis", missingFields)
 
     if (not(isEmpty(missingFields))) {
       res.status(400).send(missingFieldsMessage(missingFields))
@@ -82,7 +86,7 @@ module.exports = app => {
     }
 
     const cleanedCompanyDoc = cleanObject(
-      concat(requiredFields, ['_id', '_rev', 'type', 'img']),
+      concat(requiredFields, ["_id", "_rev", "type", "img"]),
       changedCompany
     )
 
@@ -90,8 +94,8 @@ module.exports = app => {
       .then(response => res.status(200).send(response))
       .catch(err => next(new NodeHTTPError(err.status, err.message, err)))
   })
-  app.delete('/companies/:id', (req, res, next) => {
-    const companyID = pathOr('', ['params', 'id'], req)
+  app.delete("/companies/:id", (req, res, next) => {
+    const companyID = pathOr("", ["params", "id"], req)
 
     deleteCompany(companyID)
       .then(response => res.status(200).send(response))

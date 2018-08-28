@@ -1,14 +1,15 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { TextField, withStyles, Button } from '@material-ui/core'
-import SaveIcon from '@material-ui/icons/Save'
-import MenuAppBar from '../../components/menuAppBar'
-import { setCompany, createNewCompany } from '../../action-creators/companies'
+import React from "react"
+import { connect } from "react-redux"
+import { TextField, withStyles, Button } from "@material-ui/core"
+import SaveIcon from "@material-ui/icons/Save"
+import MenuAppBar from "../../components/menuAppBar"
+import { setCompany, createNewCompany } from "../../action-creators/companies"
 import {
   EDIT_COMPANY_FORM_UPDATED,
-  NEW_COMPANY_FORM_UPDATED
-} from '../../constants'
-import { find, propEq } from 'ramda'
+  NEW_COMPANY_FORM_UPDATED,
+  NEW_COMPANY_FORM_CLEARED
+} from "../../constants"
+import { find, propEq } from "ramda"
 
 // import { Link } from 'react-router-dom'
 
@@ -17,42 +18,42 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3
   },
   root: {
-    display: 'flex',
-    flexWrap: 'wrap'
+    display: "flex",
+    flexWrap: "wrap"
   },
   textField: {
-    width: '50%'
+    width: "50%"
   },
   margin: {
     margin: theme.spacing.unit
   },
   center: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column'
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column"
   }
 })
 
 class CompanyNew extends React.Component {
   componentDidMount() {
-    const { companies, match, load } = this.props
-
+    const { companies, match, load, formClear } = this.props
+    formClear()
     // load(match.params.id)
   }
   render() {
     const { firstName, lastName, description, name } = this.props.company
     const { textField, center } = this.props.classes
-    const { onChange, saveEvent, history, match } = this.props
+    const { onChange, saveEvent, history, match, formClear } = this.props
 
     return (
       <div
         className="body"
         style={{
           paddingTop: 0,
-          backgroundRepeat: 'noRepeat',
-          height: '100%',
-          width: '100%'
+          backgroundRepeat: "noRepeat",
+          height: "100%",
+          width: "100%"
         }}
       >
         <center>
@@ -70,18 +71,18 @@ class CompanyNew extends React.Component {
                 id="company_name"
                 label="Company Name"
                 value={name}
-                onChange={e => onChange('name', e.target.value)}
+                onChange={e => onChange("name", e.target.value)}
                 className={textField}
                 required
               />
               <TextField
                 style={{
-                  marginTop: '80'
+                  marginTop: "80"
                 }}
                 id="description"
                 label="Description"
                 value={description}
-                onChange={e => onChange('description', e.target.value)}
+                onChange={e => onChange("description", e.target.value)}
                 className={textField}
                 required
               />
@@ -90,7 +91,7 @@ class CompanyNew extends React.Component {
                 id="firstName"
                 label="First Name"
                 value={firstName}
-                onChange={e => onChange('firstName', e.target.value)}
+                onChange={e => onChange("firstName", e.target.value)}
                 className={textField}
                 autoComplete="off"
                 required
@@ -99,7 +100,7 @@ class CompanyNew extends React.Component {
                 id="lastName"
                 label="Last Name"
                 value={lastName}
-                onChange={e => onChange('lastName', e.target.value)}
+                onChange={e => onChange("lastName", e.target.value)}
                 className={textField}
                 autoComplete="off"
                 required
@@ -113,6 +114,16 @@ class CompanyNew extends React.Component {
                 style={{ marginTop: 45 }}
               >
                 SUBMIT
+              </Button>
+              <Button
+                color="secondary"
+                type="textSecondary"
+                onClick={e => {
+                  history.goBack()
+                  formClear()
+                }}
+              >
+                CANCEL
               </Button>
             </React.Fragment>
           </form>
@@ -140,7 +151,8 @@ const mapActionsToProps = dispatch => {
       e.preventDefault()
       dispatch(createNewCompany(history))
     },
-    load: id => dispatch(setCompany(id))
+    load: id => dispatch(setCompany(id)),
+    formClear: () => dispatch({ type: NEW_COMPANY_FORM_CLEARED })
   }
 }
 
