@@ -2,8 +2,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import RestoreIcon from '@material-ui/icons/Restore'
-import FavoriteIcon from '@material-ui/icons/Favorite'
+
 import BarChartIcon from '@material-ui/icons/BarChart'
 import WorkIcon from '@material-ui/icons/Work'
 
@@ -18,7 +17,7 @@ class SimpleBottomNavigation extends React.Component {
     value: 0
   }
 
-  handleChange = (event, value) => {
+  handleChange = value => {
     this.setState({ value })
   }
 

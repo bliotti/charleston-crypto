@@ -1,18 +1,18 @@
-import React from "react"
-import { connect } from "react-redux"
-import { TextField, withStyles, Button } from "@material-ui/core"
-import SaveIcon from "@material-ui/icons/Save"
-import MenuAppBar from "../../components/menuAppBar"
+import React from 'react'
+import { connect } from 'react-redux'
+import { TextField, withStyles, Button } from '@material-ui/core'
+// import SaveIcon from "@material-ui/icons/Save"
+import MenuAppBar from '../../components/menuAppBar'
 import {
   changeCompany,
   setCompany,
   deleteCompany
-} from "../../action-creators/companies"
+} from '../../action-creators/companies'
 import {
-  EDIT_COMPANY_FORM_UPDATED,
-  EDIT_COMPANY_FORM_LOADED
-} from "../../constants"
-import { find, propEq } from "ramda"
+  EDIT_COMPANY_FORM_UPDATED
+  // EDIT_COMPANY_FORM_LOADED
+} from '../../constants'
+// import { find, propEq } from "ramda"
 
 // import { Link } from 'react-router-dom'
 
@@ -21,42 +21,42 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3
   },
   root: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   textField: {
-    width: "50%"
+    width: '75%'
   },
   margin: {
     margin: theme.spacing.unit
   },
   center: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
   }
 })
 
 class CompanyView extends React.Component {
   componentDidMount() {
-    const { companies, match, load } = this.props
+    const { match, load } = this.props
 
     load(match.params.id)
   }
   render() {
     const { firstName, lastName, description, name, _id } = this.props.company
     const { textField, center } = this.props.classes
-    const { onChange, onSubmit, history, match, onDelete } = this.props
+    const { onChange, onSubmit, history, onDelete } = this.props
 
     return (
       <div
         className="body"
         style={{
           paddingTop: 0,
-          backgroundRepeat: "noRepeat",
-          height: "100%",
-          width: "100%"
+          backgroundRepeat: 'noRepeat',
+          height: '100%',
+          width: '100%'
         }}
       >
         <center>
@@ -74,18 +74,18 @@ class CompanyView extends React.Component {
                 id="company_name"
                 label="Company Name"
                 value={name}
-                onChange={e => onChange("name", e.target.value)}
+                onChange={e => onChange('name', e.target.value)}
                 className={textField}
                 required
               />
               <TextField
                 style={{
-                  marginTop: "80"
+                  marginTop: '80'
                 }}
                 id="description"
                 label="Description"
                 value={description}
-                onChange={e => onChange("description", e.target.value)}
+                onChange={e => onChange('description', e.target.value)}
                 className={textField}
                 required
               />
@@ -94,7 +94,7 @@ class CompanyView extends React.Component {
                 id="firstName"
                 label="First Name"
                 value={firstName}
-                onChange={e => onChange("firstName", e.target.value)}
+                onChange={e => onChange('firstName', e.target.value)}
                 className={textField}
                 required
               />
@@ -102,7 +102,7 @@ class CompanyView extends React.Component {
                 id="lastName"
                 label="Last Name"
                 value={lastName}
-                onChange={e => onChange("lastName", e.target.value)}
+                onChange={e => onChange('lastName', e.target.value)}
                 className={textField}
                 required
               />

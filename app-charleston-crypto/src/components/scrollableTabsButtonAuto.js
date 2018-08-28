@@ -1,14 +1,14 @@
-import React from "react"
-import { withStyles } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
-import Tabs from "@material-ui/core/Tabs"
-import Tab from "@material-ui/core/Tab"
-import { connect } from "react-redux"
-import { getExchangeData } from "../action-creators/exchangeData"
-import { map } from "ramda"
-import SearchIcon from "@material-ui/icons/Search"
-import MenuIcon from "@material-ui/icons/Menu"
-import { DRAWER_TOGGLED } from "../constants"
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import { connect } from 'react-redux'
+import { getExchangeData } from '../action-creators/exchangeData'
+import { map } from 'ramda'
+import MenuIcon from '@material-ui/icons/Menu'
+import { DRAWER_TOGGLED } from '../constants'
+// import SearchIcon from "@material-ui/icons/Search"
 // import { Link } from 'react-router-dom'
 // import Typography from '@material-ui/core/Typography'
 // import IconButton from '@material-ui/core/IconButton'
@@ -16,7 +16,7 @@ import { DRAWER_TOGGLED } from "../constants"
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    width: "100%",
+    width: '100%',
     backgroundColor: theme.palette.background.paper
   }
 })
@@ -31,7 +31,7 @@ class ScrollableTabsButtonAuto extends React.Component {
   render() {
     const {
       classes,
-      goToSearch,
+      // goToSearch,
       history,
       exchangeData,
       toggleDrawer
@@ -41,15 +41,15 @@ class ScrollableTabsButtonAuto extends React.Component {
       <Tab
         label={
           coin.symbol +
-          " " +
+          ' ' +
           coin.current_price.toLocaleString(undefined, {
-            style: "currency",
-            currency: "USD"
+            style: 'currency',
+            currency: 'USD'
           })
         }
         onClick={e => history.push(`/market/${coin.symbol}usd`)}
         key={coin.symbol}
-        style={{ textDecoration: "none" }}
+        style={{ textDecoration: 'none' }}
       />
     )
 
@@ -96,7 +96,7 @@ const mapActionsToProps = dispatch => {
   return {
     toggleDrawer: () => dispatch({ type: DRAWER_TOGGLED }),
     getExchangeData: () => dispatch(getExchangeData),
-    goToSearch: history => e => history.push("/resources/search")
+    goToSearch: history => e => history.push('/resources/search')
   }
 }
 

@@ -69,10 +69,7 @@ const Home = props => {
           <div style={{ padding: 20 }} />
 
           <Link to="/companies" style={{ textDecoration: 'none' }}>
-            <Typography variant="title">
-              {' '}
-              Local Companies Building Blockchains{' '}
-            </Typography>
+            <Typography variant="title">Local Companies</Typography>
           </Link>
 
           <div style={{ padding: 20 }} />
@@ -119,10 +116,10 @@ const connector = connect(mapStateToProps)
 
 export default withDrawer(connector(withStyles(styles)(Home)))
 
-{
-  /* <Link to="/dashboardpage"> Dashboard </Link>
-<br />
-<Link to="/market"> Market </Link>
-<br />
-<br /> */
-}
+// {
+//   /* <Link to="/dashboardpage"> Dashboard </Link>
+// <br />
+// <Link to="/market"> Market </Link>
+// <br />
+// <br /> */
+// }

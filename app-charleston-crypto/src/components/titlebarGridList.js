@@ -4,9 +4,11 @@ import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import { map } from 'ramda'
-import { Icon } from '@material-ui/core'
-// import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+// import IconButton from '@material-ui/core/IconButton'
+// import StarBorderIcon from '@material-ui/icons/StarBorder'
+// import { Icon } from '@material-ui/core'
 
 const styles = theme => ({
   root: {
@@ -24,21 +26,20 @@ const styles = theme => ({
   icon: {
     // color: 'rgba(255, 255, 255, 0.54)'
     color: 'rgba(255, 255, 255, 0.01)'
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+      'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
   }
 })
 
 const TitlebarGridList = props => {
-  const { classes, history } = props
+  const { history, classes } = props
 
   const li = tile => {
     return (
-      <GridListTile
-        key={tile._id}
-        onClick={e => history.push('/resources/search')}
-      >
-        {/* <img src={tile.img} alt={tile.name} /> */}
-        {/* <Icon style={{ color: 'black' }}>{tile.icon}</Icon> */}
-
+      <GridListTile key={tile._id} component={Link} to={`/resources/search`}>
         <GridListTileBar
           title={tile.name}
           style={{
@@ -46,6 +47,7 @@ const TitlebarGridList = props => {
             borderColor: '#9e9e9e',
             borderRadius: 10
           }}
+          className={classes.titleBar}
         />
       </GridListTile>
     )

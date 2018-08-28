@@ -1,15 +1,15 @@
-import React from "react"
-import { connect } from "react-redux"
-import { TextField, withStyles, Button } from "@material-ui/core"
-import SaveIcon from "@material-ui/icons/Save"
-import MenuAppBar from "../../components/menuAppBar"
-import { setCompany, createNewCompany } from "../../action-creators/companies"
+import React from 'react'
+import { connect } from 'react-redux'
+import { TextField, withStyles, Button } from '@material-ui/core'
+// import SaveIcon from "@material-ui/icons/Save"
+import MenuAppBar from '../../components/menuAppBar'
+import { setCompany, createNewCompany } from '../../action-creators/companies'
 import {
-  EDIT_COMPANY_FORM_UPDATED,
+  // EDIT_COMPANY_FORM_UPDATED,
   NEW_COMPANY_FORM_UPDATED,
   NEW_COMPANY_FORM_CLEARED
-} from "../../constants"
-import { find, propEq } from "ramda"
+} from '../../constants'
+// import { find, propEq } from "ramda"
 
 // import { Link } from 'react-router-dom'
 
@@ -18,103 +18,124 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3
   },
   root: {
-    display: "flex",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   textField: {
-    width: "50%"
+    width: '70%',
+    margin: 5
   },
   margin: {
     margin: theme.spacing.unit
   },
   center: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
   }
 })
 
 class CompanyNew extends React.Component {
   componentDidMount() {
-    const { companies, match, load, formClear } = this.props
+    const {
+      // companies,
+      //  match,
+      //   load,
+      formClear
+    } = this.props
     formClear()
     // load(match.params.id)
   }
   render() {
-    const { firstName, lastName, description, name } = this.props.company
+    const { firstName, lastName, description, name, img } = this.props.company
     const { textField, center } = this.props.classes
-    const { onChange, saveEvent, history, match, formClear } = this.props
+    const { onChange, saveEvent, history, formClear } = this.props
 
     return (
       <div
-        className="body"
         style={{
           paddingTop: 0,
-          backgroundRepeat: "noRepeat",
-          height: "100%",
-          width: "100%"
+          backgroundRepeat: 'noRepeat',
+          height: '100%',
+          width: '100%'
         }}
       >
         <center>
+          <MenuAppBar title="Company Profile" backArrow history={history} />
           <form
             className={center}
             autoComplete="off"
             onSubmit={saveEvent(history)}
           >
-            <React.Fragment>
-              <MenuAppBar title="Company Profile" backArrow history={history} />
-              <TextField
-                style={{
-                  marginTop: 120
-                }}
-                id="company_name"
-                label="Company Name"
-                value={name}
-                onChange={e => onChange("name", e.target.value)}
-                className={textField}
-                required
-              />
-              <TextField
-                style={{
-                  marginTop: "80"
-                }}
-                id="description"
-                label="Description"
-                value={description}
-                onChange={e => onChange("description", e.target.value)}
-                className={textField}
-                required
-              />
+            <TextField
+              style={{
+                marginTop: 120
+              }}
+              id="company_name"
+              label="Company Name"
+              value={name}
+              onChange={e => onChange('name', e.target.value)}
+              className={textField}
+              required
+            />
+            <TextField
+              style={{
+                marginTop: '80'
+              }}
+              id="description"
+              label="Description"
+              value={description}
+              onChange={e => onChange('description', e.target.value)}
+              className={textField}
+              required
+            />
 
-              <TextField
-                id="firstName"
-                label="First Name"
-                value={firstName}
-                onChange={e => onChange("firstName", e.target.value)}
-                className={textField}
-                autoComplete="off"
-                required
-              />
-              <TextField
-                id="lastName"
-                label="Last Name"
-                value={lastName}
-                onChange={e => onChange("lastName", e.target.value)}
-                className={textField}
-                autoComplete="off"
-                required
-              />
+            <TextField
+              id="firstName"
+              label="First Name"
+              value={firstName}
+              onChange={e => onChange('firstName', e.target.value)}
+              className={textField}
+              autoComplete="off"
+              required
+            />
+            <TextField
+              id="lastName"
+              label="Last Name"
+              value={lastName}
+              onChange={e => onChange('lastName', e.target.value)}
+              className={textField}
+              autoComplete="off"
+              required
+            />
+            <TextField
+              id="img"
+              label="img URL"
+              value={img}
+              onChange={e => onChange('img', e.target.value)}
+              className={textField}
+              autoComplete="off"
+            />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'baseline'
+              }}
+            >
               <Button
                 color="primary"
                 type="submit"
                 variant="raised"
                 aria-label="submit"
                 // className="fab-button"
-                style={{ marginTop: 45 }}
+                style={{ margin: 25 }}
               >
                 SUBMIT
               </Button>
+
               <Button
                 color="secondary"
                 type="textSecondary"
@@ -122,10 +143,11 @@ class CompanyNew extends React.Component {
                   history.goBack()
                   formClear()
                 }}
+                style={{ margin: 25 }}
               >
                 CANCEL
               </Button>
-            </React.Fragment>
+            </div>
           </form>
         </center>
       </div>

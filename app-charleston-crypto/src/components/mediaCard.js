@@ -12,13 +12,19 @@ import { map } from 'ramda'
 
 const styles = {
   card: {
-    maxWidth: 345,
+    width: 350,
     margin: 20,
+    paddingBottom: 10,
     borderRadius: 20
   },
   media: {
-    height: 250,
-    flexBasis: 'auto'
+    height: 250
+    // flexBasis: 'auto'
+  },
+  grid: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   }
 }
 
@@ -47,10 +53,17 @@ const li = classes => company => (
         justifyContent: 'space-evenly'
       }}
     >
-      <Button variant="raised" size="small" color="primary" href={company.site}>
+      <Button
+        style={{ padding: 10 }}
+        variant="raised"
+        size="small"
+        color="primary"
+        href={company.site}
+      >
         Contact
       </Button>
       <Button
+        style={{ padding: 10 }}
         size="small"
         variant="contained"
         color="primary"
@@ -66,7 +79,7 @@ const li = classes => company => (
 const MediaCard = props => {
   const { classes, companies } = props
   const styledLi = li(classes)
-  return <React.Fragment>{map(styledLi, companies)}</React.Fragment>
+  return <div className={classes.grid}>{map(styledLi, companies)}</div>
 }
 
 const mapStateToProps = state => {
