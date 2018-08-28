@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import withDrawer from '../components/withDrawer'
+import SimpleBottomNavigation from '../components/simpleBottomNavigation'
 // import MenuAppBar from '../components/menuAppBar'
 // import withDrawer from '../components/withDrawer'
 // import SearchIcon from '@material-ui/icons/Search'
@@ -68,7 +69,10 @@ const Home = props => {
           <div style={{ padding: 20 }} />
 
           <Link to="/companies" style={{ textDecoration: 'none' }}>
-            <Typography variant="title"> Companies </Typography>
+            <Typography variant="title">
+              {' '}
+              Local Companies Building Blockchains{' '}
+            </Typography>
           </Link>
 
           <div style={{ padding: 20 }} />
@@ -77,7 +81,7 @@ const Home = props => {
 
           <div style={{ padding: 20 }} />
           <Link to="/companies/new" style={{ textDecoration: 'none' }}>
-            <Typography style={{ textDecoration: 'none' }} variant="title">
+            <Typography style={{ textDecoration: 'none' }} variant="body1">
               Add A New Company
             </Typography>
           </Link>
@@ -100,12 +104,12 @@ const Home = props => {
 
           <div style={{ padding: 20 }} />
 
-          {/* <TitlebarGridList /> */}
+          <TitlebarGridList history={history} />
         </center>
         <div style={{ padding: 20 }} />
       </div>
 
-      {/* <SimpleBottomNavigation history={history} /> */}
+      <SimpleBottomNavigation history={history} />
     </React.Fragment>
   )
 }

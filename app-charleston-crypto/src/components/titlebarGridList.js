@@ -1,10 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import { map } from 'ramda'
+import { Icon } from '@material-ui/core'
 // import { Link } from "react-router-dom"
 import { connect } from 'react-redux'
 
@@ -27,30 +27,33 @@ const styles = theme => ({
   }
 })
 
-const li = tile => {
-  return (
-    <GridListTile key={tile._id}>
-      {/* <img src={tile.img} alt={tile.name} /> */}
-      {/* <Icon style={{ color: "grey" }}>{tile.icon}</Icon> */}
-      <GridListTileBar
-        title={tile.name}
-        style={{
-          backgroundColor: 'black',
-
-          borderColor: '#9e9e9e',
-          borderRadius: 10
-        }}
-      />
-    </GridListTile>
-  )
-}
-
 const TitlebarGridList = props => {
-  //const { classes } = props
+  const { classes, history } = props
+
+  const li = tile => {
+    return (
+      <GridListTile
+        key={tile._id}
+        onClick={e => history.push('/resources/search')}
+      >
+        {/* <img src={tile.img} alt={tile.name} /> */}
+        {/* <Icon style={{ color: 'black' }}>{tile.icon}</Icon> */}
+
+        <GridListTileBar
+          title={tile.name}
+          style={{
+            backgroundColor: 'black',
+            borderColor: '#9e9e9e',
+            borderRadius: 10
+          }}
+        />
+      </GridListTile>
+    )
+  }
 
   return (
     <div className={props.classes.root}>
-      <GridList cols={3} cellHeight={80} className={props.classes.gridList}>
+      <GridList cols={2} cellHeight={48} className={props.classes.gridList}>
         {map(li, props.categories)}
       </GridList>
     </div>
@@ -59,10 +62,6 @@ const TitlebarGridList = props => {
 
 const mapStateToProps = state => {
   return { categories: state.categories }
-}
-
-TitlebarGridList.propTypes = {
-  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(connect(mapStateToProps)(TitlebarGridList))

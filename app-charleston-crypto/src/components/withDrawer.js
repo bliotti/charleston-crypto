@@ -8,25 +8,43 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { DRAWER_TOGGLED } from '../constants'
 import SearchIcon from '@material-ui/icons/Search'
+import WorkIcon from '@material-ui/icons/Work'
+import BarChartIcon from '@material-ui/icons/BarChart'
 
 const withDrawer = function(PageComponent) {
   const WrappedDrawerPageComponent = props => {
     const MenuListItems = (
       <div>
-        {/* <Link to="/" className="router-link">
+        <Link to="/" className="router-link">
           <ListItem button onClick={props.toggleDrawer(props.open)}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary="Home" />
           </ListItem>
-        </Link> */}
+        </Link>
         <Link to="/resources/search" className="router-link">
           <ListItem button onClick={props.toggleDrawer(props.open)}>
             <ListItemIcon>
               <SearchIcon />
             </ListItemIcon>
             <ListItemText primary="Resources" />
+          </ListItem>
+        </Link>
+        <Link to="/companies" className="router-link">
+          <ListItem button onClick={props.toggleDrawer(props.open)}>
+            <ListItemIcon>
+              <WorkIcon />
+            </ListItemIcon>
+            <ListItemText primary="Companies" />
+          </ListItem>
+        </Link>
+        <Link to="/market/btcusd" className="router-link">
+          <ListItem button onClick={props.toggleDrawer(props.open)}>
+            <ListItemIcon>
+              <BarChartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Market View" />
           </ListItem>
         </Link>
       </div>
