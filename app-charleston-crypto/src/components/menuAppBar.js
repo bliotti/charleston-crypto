@@ -16,7 +16,9 @@ const styles = theme => ({
     backgroundColor: '#131722'
   },
   flex: {
-    flex: 1
+    display: 'flex',
+    flex: 1,
+    marginLeft: -18
   },
   firstButton: {
     marginLeft: -12,
@@ -54,7 +56,7 @@ const MenuAppBar = props => {
               </IconButton>
             ) : null}
           </React.Fragment>
-          <Typography variant="title" color="inherit" className={classes.flex}>
+          <Typography variant="title" color="primary" className={classes.flex}>
             {props.title}
           </Typography>
           {props.searchImage ? (

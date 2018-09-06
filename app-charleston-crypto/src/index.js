@@ -10,14 +10,20 @@ import { setCompanies } from './action-creators/companies'
 import { fetchResources } from './action-creators/resources'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { CssBaseline } from '@material-ui/core'
-import { blueGrey, amber, darkBlack } from '@material-ui/core/colors'
+import {
+  white,
+  amber,
+  grey,
+  darkBlack,
+  deepPurple
+} from '@material-ui/core/colors'
 
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-    primary: blueGrey,
-    secondary: amber,
-    textColor: darkBlack
+    primary: { main: '#ffffff' },
+    secondary: grey,
+    textColor: amber
   }
 })
 

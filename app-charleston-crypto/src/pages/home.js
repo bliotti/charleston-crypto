@@ -51,7 +51,10 @@ const Home = props => {
           />
 
           <div style={{ paddingTop: 0, paddingBottom: 80 }}>
-            <Typography color="primary" variant="display2">
+            <Typography
+              // color="primary"
+              variant="display2"
+            >
               Charleston Crypto
             </Typography>
             <br />
