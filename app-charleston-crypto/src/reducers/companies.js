@@ -7,21 +7,22 @@ import {
   NEW_COMPANY_FORM_UPDATED,
   COMPANY_DELETE_SUCCEECED,
   NEW_COMPANY_FORM_CLEARED
-} from "../constants"
-import { merge } from "ramda"
+} from '../constants'
+import { merge } from 'ramda'
+import { initialCompanies } from '../assets/initialState'
 
 const initialCompany = {
-  _id: "",
-  type: "",
-  name: "",
-  description: "",
-  firstName: "",
-  lastName: "",
-  site: "",
-  icon: ""
+  _id: '',
+  type: '',
+  name: '',
+  description: '',
+  firstName: '',
+  lastName: '',
+  site: '',
+  icon: ''
 }
 
-export const companies = (state = [], action) => {
+export const companies = (state = initialCompanies, action) => {
   switch (action.type) {
     case SET_COMPANIES:
       return action.payload

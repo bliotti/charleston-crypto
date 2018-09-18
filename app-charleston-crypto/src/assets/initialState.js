@@ -1,4 +1,4 @@
-const companies = [
+const initialCompanies = [
   {
     _id: 'company_commit-good',
     type: 'company',
@@ -34,7 +34,7 @@ const companies = [
   }
 ]
 
-const data = [
+const initialData = [
   {
     _id: 'category_getting-started',
     type: 'category',
@@ -272,7 +272,7 @@ const data = [
   }
 ]
 
-const resources = [
+const initialResources = [
   {
     href:
       'https://medium.com/@nik5ter/explain-bitcoin-like-im-five-73b4257ac833',
@@ -4732,4 +4732,4 @@ const resources = [
   }
 ]
 
-export { companies, data, resources }
+export { initialCompanies, initialData, initialResources }

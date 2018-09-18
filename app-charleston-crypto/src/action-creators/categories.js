@@ -3,6 +3,8 @@ import { SET_CATEGORIES } from '../constants'
 import { sort } from 'ramda'
 const url = process.env.REACT_APP_BASE_URL + '/categories'
 
+// Not Used
+
 export const setCategories = async (dispatch, getState) => {
   const categories = await fetch(url)
     .then(res => res.json())
