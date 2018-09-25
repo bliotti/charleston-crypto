@@ -1,7 +1,7 @@
 import { RESOURCES_SEARCH_TEXT_UPDATED, GET_RESOURCES } from '../constants'
 import { initialResources } from '../assets/initialState'
 
-export const resources = (state = initialResources, action) => {
+export const resources = (state = [], action) => {
   switch (action.type) {
     case GET_RESOURCES:
       return action.payload

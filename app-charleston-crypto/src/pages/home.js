@@ -51,10 +51,7 @@ const Home = props => {
           />
 
           <div style={{ paddingTop: 0, paddingBottom: 80 }}>
-            <Typography
-              // color="primary"
-              variant="display2"
-            >
+            <Typography color="primary" variant="display2">
               Charleston Crypto
             </Typography>
             <br />
@@ -66,14 +63,13 @@ const Home = props => {
             </Typography>
           </div>
 
-          <div
+          {/* <div
             style={{
               borderTop: '1px solid',
               paddingTop: '12px',
               borderColor: '#9e9e9e'
             }}
-          />
-          <div style={{ padding: 20 }} />
+          /> */}
 
           <Link to="/companies" style={{ textDecoration: 'none' }}>
             <Typography color="primary" variant="title">
@@ -81,22 +77,20 @@ const Home = props => {
             </Typography>
           </Link>
 
-          <div style={{ padding: 20 }} />
-
           <MediaCard />
 
-          <div style={{ padding: 20 }} />
           <Link to="/companies/new" style={{ textDecoration: 'none' }}>
             <Typography
               color="primary"
-              style={{ textDecoration: 'none' }}
+              style={{
+                textDecoration: 'none',
+                padding: 20
+              }}
               variant="body1"
             >
               Add A New Company
             </Typography>
           </Link>
-
-          <div style={{ padding: 20 }} />
 
           <div
             style={{
@@ -106,15 +100,13 @@ const Home = props => {
             }}
           />
 
-          <div style={{ padding: 20 }} />
-
-          <Link to="/resources/search" style={{ textDecoration: 'none' }}>
-            <Typography color="primary" variant="title">
-              Bitcoin Resources
-            </Typography>
-          </Link>
-
-          <div style={{ padding: 20 }} />
+          <div style={{ padding: 20 }}>
+            <Link to="/resources/search" style={{ textDecoration: 'none' }}>
+              <Typography color="primary" variant="title">
+                Resources
+              </Typography>
+            </Link>
+          </div>
 
           <TitlebarGridList history={history} />
         </center>
