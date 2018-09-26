@@ -3,7 +3,11 @@
 Your guide to Charleston's cryptocurrency & blockchain community. 
 [Charleston Crypto](https://charlestoncrypto.com)
 
-# SCRAPER used to gather resources from [here](https://lopp.net/bitcoin.html)
+#### SCRAPER used to gather resources from [here](https://lopp.net/bitcoin.html) 
+#### CouchDB 
+#### Express JS
+#### React
+#### Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
