@@ -3,6 +3,7 @@
 Your guide to Charleston's cryptocurrency & blockchain community. 
 [Charleston Crypto](https://charlestoncrypto.com)
 
+# SCRAPER used to gather resources from [here](https://lopp.net/bitcoin.html)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
