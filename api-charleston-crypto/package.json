@@ -17,7 +17,7 @@
     "fs": "0.0.1-security",
     "himalaya": "^1.1.0",
     "node-http-error": "^2.0.0",
-    "nodemon": "^1.18.3",
+    "nodemon": "^2.0.3",
     "pouchdb-adapter-http": "^7.0.0",
     "pouchdb-core": "^7.0.0",
     "ramda": "^0.25.0",
